@@ -106,15 +106,16 @@ export default {
   padding: 10px
 .calendar
   background-color #fff
-  min-height: 288px
+  min-height: 295px
   display flex
   flex-wrap: wrap
   text-align center
-  color: #353C46
+  color: rgba(#353C46, .8)
   border-radius: 2px
   min-width: 0
   position: relative
   text-decoration: none
+  padding: 0px 20px
   box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)
   justify-content flex-start
   align-content flex-start
@@ -147,6 +148,9 @@ export default {
     display flex
     justify-content center
     align-items center
+    &:hover
+      background-color rgba(#666, 0.1)
+      border-radius 5px
     &.calendar--active
       background-color: rgba(#FFBABA, .5)
       border-radius 3px
