@@ -88,5 +88,12 @@ export default {
   .container__month
     padding: 8px
     flex 16.66%
-
+    @media (max-width: 1300px)
+      flex: 25%
+    @media (max-width: 992px)
+      flex: 33.3%
+    @media (max-width: 768px)
+      flex: 50%
+    @media (max-width: 450px)
+      flex: 100%
 </style>
