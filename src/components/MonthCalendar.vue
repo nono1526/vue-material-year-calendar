@@ -2,8 +2,7 @@
 <div class="c-wrapper">
   <div class="calendar"
     @mouseup="mouseUp"
-    @mouseout.self="mouseUp"
-    @mousein.self="mouseUp"
+    @mouseleave.stop="mouseUp"
   >
     <div class="calendar__title">{{ month + ' 月' }}</div>
       <div
