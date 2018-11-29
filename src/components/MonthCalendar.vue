@@ -1,31 +1,37 @@
 <template>
 <div class="c-wrapper">
-  <div class="calendar">
+  <div class="calendar"
+    @mouseup="mouseUp"
+    @mouseout.self="mouseUp"
+    @mousein.self="mouseUp"
+  >
     <div class="calendar__title">{{ month + ' 月' }}</div>
-    <div
-      v-for="(day, key) in 7"
-      :key="`title${day}`"
-      class="calendar__day"
-      :class="{
-        'calendar__title--weekend': key === 0 || key === 6
-      }"
-    >
-      {{ showDayTitle(key) }}
-    </div>
-    <div
-      v-for="(dayObj, key) in showDays"
-      class="calendar__day"
-      :key="`day${key}`"
-    >
       <div
-        @click="toggleDay(dayObj)"
-        class="day"
-        :class="{
-          'calendar__day--nextmonth': dayObj.isNextMonth,
-          'calendar--active': dayObj.active
-        }"
+        class="calendar__body">
+        <div
+        v-for="(day, key) in 7"
+        :key="`title${day}`"
+        class="calendar__day"
+
       >
-        {{ dayObj.value }}
+        {{ showDayTitle(key) }}
+      </div>
+      <div
+        v-for="(dayObj, key) in showDays"
+        class="calendar__day"
+        :key="`day${key}`"
+      >
+        <div
+          @mouseover="dragDay(arguments,dayObj)"
+          @mousedown="mouseDown(dayObj)"
+          class="day"
+          :class="{
+            'calendar__day--otherMonth': dayObj.isOtherMonth,
+            'calendar--active': dayObj.active
+          }"
+        >
+          {{ dayObj.value }}
+        </div>
       </div>
     </div>
   </div>
@@ -52,7 +58,8 @@ export default {
   },
   data () {
     return {
-      showDays: []
+      showDays: [],
+      isMouseDown: false
     }
   },
   methods: {
@@ -74,18 +81,28 @@ export default {
           return {
             value,
             active: false,
-            isNextMonth: day > lastDate
+            isOtherMonth: firstDay > i || day > lastDate
           }
         })
       this.showDays = fullCol
     },
     showDayTitle (day) {
-      const dayMapping = ['日', '一', '二', '三', '四', '五', '六']
+      const dayMapping = ['一', '二', '三', '四', '五', '六', '日']
       return dayMapping[day]
     },
     toggleDay (dayObj) {
-      if (dayObj.isNextMonth) return
+      if (dayObj.isOtherMonth) return
       dayObj.active = !dayObj.active
+    },
+    dragDay (arg, dayObj) {
+      if (this.isMouseDown) this.toggleDay(dayObj)
+    },
+    mouseDown (dayObj) {
+      this.toggleDay(dayObj)
+      this.isMouseDown = true
+    },
+    mouseUp () {
+      this.isMouseDown = false
     }
   },
   watch: {
@@ -106,19 +123,20 @@ export default {
   padding: 10px
 .calendar
   background-color #fff
-  min-height: 295px
-  display flex
-  flex-wrap: wrap
+  min-height 295px
   text-align center
-  color: rgba(#353C46, .8)
-  border-radius: 2px
-  min-width: 0
-  position: relative
-  text-decoration: none
-  padding: 0px 20px
-  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)
-  justify-content flex-start
-  align-content flex-start
+  color rgba(#353C46, .8)
+  border-radius 2px
+  min-width 0
+  position relative
+  text-decoration none
+  box-shadow 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)
+  transition transform .3s ease
+  &:hover
+    z-index: 2
+    @media (min-width: 1024px)
+      transform: scale(1.15)
+      box-shadow 0 7px 21px 0 rgba(0,0,0,.1)
   .calendar__title
     font-weight bold
     flex 100%
@@ -129,8 +147,12 @@ export default {
     font-size 18px
     height: 50px
     margin-bottom 12px
-  & .calendar__title--weekend
-    color: red
+  .calendar__body
+    display flex
+    flex-wrap: wrap
+    justify-content flex-start
+    align-content flex-start
+    padding: 0px 20px
   .calendar__day
     flex 14.28%
     display flex
@@ -148,7 +170,7 @@ export default {
     display flex
     justify-content center
     align-items center
-    &:hover
+    &:not(.calendar__day--otherMonth):hover
       background-color rgba(#666, 0.1)
       border-radius 5px
     &.calendar--active
@@ -168,6 +190,7 @@ export default {
       border-radius 50%
       background-image url('../../public/baseline-remove_circle-24px.svg')
       background-size 100% 100%
-  & .calendar__day--nextmonth
-   color: #eaeaea
+  & .calendar__day--otherMonth
+    color: #eaeaea
+    cursor: auto
 </style>
