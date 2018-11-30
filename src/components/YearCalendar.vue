@@ -8,7 +8,7 @@
         class="year__chooser"
         @click="changeYear(i)"
       >
-        {{ i + year - 3 }}
+        {{ i + activeYear - 3 }}
       </span>
       <!-- <span><button @click="addYear(1)">next</button></span> -->
     </div>
@@ -17,8 +17,9 @@
         class="container__month"
         v-for="n in 12"
         :key="`month-${n}`"
-        :year="year"
+        :year="activeYear"
         :month="n"
+        :activeDates="month[n] || []"
       >
       </month-calendar>
     </div>
@@ -30,21 +31,46 @@ import dayjs from 'dayjs'
 import MonthCalendar from './MonthCalendar'
 export default {
   name: 'year-candelar',
+  props: {
+    activeDates: {
+      type: Array,
+      default: () => []
+    },
+    value: {
+      type: [String, Number],
+      default: dayjs().year()
+    }
+  },
   components: {
     MonthCalendar
   },
   data () {
     return {
-      year: dayjs().year()
+    }
+  },
+  computed: {
+    month () {
+      const month = {}
+      this.activeDates.forEach(date => {
+        let m = (dayjs(date).month() + 1).toString()
+        if (!month[m]) month[m] = []
+        month[m].push(date)
+      })
+      console.log(month)
+      return month
+    },
+    activeYear: {
+      get () {
+        return parseInt(this.value)
+      },
+      set (val) {
+        this.$emit('input', val)
+      }
     }
   },
   methods: {
-    addYear (val) {
-      this.year += val
-    },
     changeYear (idx) {
-      this.year = idx + this.year - 3
-      console.log(this.year)
+      this.activeYear = idx + this.activeYear - 3
     }
   }
 }
@@ -59,6 +85,7 @@ export default {
   box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)
   background-color #F6F6F3
   .container__year
+    user-select none
     height 65px
     background-color #fff
     font-size 24px

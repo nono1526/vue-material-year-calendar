@@ -52,10 +52,6 @@ export default {
     year: {
       type: [String, Number],
       default: () => dayjs().year()
-    },
-    value: {
-      type: Array,
-      default: () => []
     }
   },
   data () {
@@ -79,7 +75,6 @@ export default {
       let day = 0
       const fullCol = Array.from(Array(weekRow * WEEK).keys())
         .map(i => {
-
           let value = firstDay <= i
             ? day++ % lastDate + 1
             : ''
@@ -108,18 +103,34 @@ export default {
     },
     mouseUp () {
       this.isMouseDown = false
+    },
+    setActiveDate () {
+      const activeMonth = dayjs()
+        .set('year', this.year)
+        .set('month', this.month - 1)
+      let firstDay = activeMonth.startOf('month').day() - 1
+      if (firstDay < 0) firstDay += 7
+      this.activeDates.forEach(date => {
+        let active = dayjs(date)
+        if (active.year() !== this.year) return
+        let activeDate = active.date()
+        let row = Math.floor(activeDate / 7)
+        let activeArrayKey = (activeDate % 7 - 1 + firstDay) + 7 * row
+        this.showDays[activeArrayKey].active = true // to array index
+      })
     }
   },
   watch: {
     year (val) {
       this.initCalendar()
+      this.setActiveDate()
     }
   },
   created () {
     this.initCalendar()
   },
   mounted () {
-
+    this.setActiveDate()
   }
 }
 </script>
