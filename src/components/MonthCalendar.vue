@@ -11,7 +11,6 @@
         v-for="(day, key) in 7"
         :key="`title${day}`"
         class="calendar__day"
-
       >
         {{ showDayTitle(key) }}
       </div>
@@ -42,6 +41,10 @@ import dayjs from 'dayjs'
 export default {
   name: 'month-calendar',
   props: {
+    activeDates: {
+      type: Array,
+      default: () => []
+    },
     month: {
       type: [String, Number],
       default: () => dayjs().month() + 1
@@ -64,16 +67,19 @@ export default {
   methods: {
     initCalendar () {
       if (!this.year || !this.month) return []
-      const activeDay = dayjs()
+      const activeMonth = dayjs()
+        .set('date', 1)
         .set('year', this.year)
         .set('month', this.month - 1)
-      const firstDay = activeDay.startOf('month').day()
-      const lastDate = activeDay.endOf('month').date()
+      let firstDay = activeMonth.startOf('month').day() - 1
+      if (firstDay < 0) firstDay += 7
+      const lastDate = activeMonth.endOf('month').date()
       const weekRow = firstDay === 6 ? 6 : 5
       const WEEK = 7
       let day = 0
       const fullCol = Array.from(Array(weekRow * WEEK).keys())
         .map(i => {
+
           let value = firstDay <= i
             ? day++ % lastDate + 1
             : ''
@@ -111,9 +117,11 @@ export default {
   },
   created () {
     this.initCalendar()
+  },
+  mounted () {
+
   }
 }
-
 </script>
 
 <style lang="stylus" scoped>
