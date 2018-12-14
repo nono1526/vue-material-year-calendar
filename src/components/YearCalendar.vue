@@ -20,6 +20,7 @@
         :year="activeYear"
         :month="n"
         :activeDates="month[n] || []"
+        @toggleDate="toggleDate"
       >
       </month-calendar>
     </div>
@@ -71,6 +72,16 @@ export default {
   methods: {
     changeYear (idx) {
       this.activeYear = idx + this.activeYear - 3
+    },
+    toggleDate (dateObj) {
+      this.$emit('toggleDate', {
+        date: dayjs()
+          .set('year', this.value)
+          .set('month', dateObj.month - 1)
+          .set('date', dateObj.date)
+          .format('YYYY-MM-DD'),
+        selected: dateObj.selected
+      })
     }
   }
 }

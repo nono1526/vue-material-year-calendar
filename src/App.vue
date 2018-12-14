@@ -3,6 +3,7 @@
     <year-calendar
       v-model="year"
       :activeDates="activeDates"
+      @toggleDate="toggleDate"
     ></year-calendar>
   </div>
 </template>
@@ -19,6 +20,11 @@ export default {
     return {
       year: 2018,
       activeDates: ['2018-01-01', '2018-12-06', '2018-02-20', '2018-01-14', '2018-01-13', '2018-01-15', '2019-01-01', '2017-06-14']
+    }
+  },
+  methods: {
+    toggleDate (dateInfo) {
+      console.log(dateInfo)
     }
   }
 }

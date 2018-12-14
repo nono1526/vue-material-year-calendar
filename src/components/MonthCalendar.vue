@@ -27,6 +27,7 @@
             'calendar__day--otherMonth': dayObj.isOtherMonth,
             'calendar--active': dayObj.active
           }"
+
         >
           {{ dayObj.value }}
         </div>
@@ -93,6 +94,11 @@ export default {
     toggleDay (dayObj) {
       if (dayObj.isOtherMonth) return
       dayObj.active = !dayObj.active
+      this.$emit('toggleDate', {
+        month: this.month,
+        date: dayObj.value,
+        selected: dayObj.active
+      })
     },
     dragDay (arg, dayObj) {
       if (this.isMouseDown) this.toggleDay(dayObj)
