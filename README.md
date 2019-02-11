@@ -1,11 +1,12 @@
 # vue-material-year-calendar component
-[[DEMO](https://nono1526.github.io/vue-year-calendar/)]-[[GitHub](https://github.com/nono1526/vue-year-calendar)]
+[[DEMO](https://nono1526.github.io/vue-year-calendar/)]-[[GitHub](https://github.com/nono1526/vue-year-calendar)]  
 depend on dayjs
 ## `<year-calendar>`
 ### PROPS
 #### `v-model` 綁定年份 `String | Number` (required)
 所使用的預設年份
-#### `activeDates` 預設選擇日期 `Array` (default [])
+#### `activeDates.sync` 預設選擇日期 `Array` (default [])
+需使用 .sync 來雙向同步日期資訊
 傳入預設被選擇的日期 Ex: `['2018-01-01', '2018-12-06', '2018-02-20', '2018-01-14', '2018-01-13', '2018-01-15', '2019-01-01', '2017-06-14']`
 ### EVENT
 #### @toggleDate 當所選日期被使用者所改變

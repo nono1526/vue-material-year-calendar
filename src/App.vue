@@ -26,8 +26,6 @@ export default {
     toggleDate (dateInfo) {
       console.log(dateInfo)
     }
-  },
-  mounted () {
   }
 }
 </script>

@@ -57,7 +57,6 @@ export default {
         if (!month[m]) month[m] = []
         month[m].push(date)
       })
-      console.log(month)
       return month
     },
     activeYear: {

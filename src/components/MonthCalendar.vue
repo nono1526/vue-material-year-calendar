@@ -130,6 +130,9 @@ export default {
     year (val) {
       this.initCalendar()
       this.setActiveDate()
+    },
+    activeDates () {
+      this.setActiveDate()
     }
   },
   created () {
