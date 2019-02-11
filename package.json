@@ -1,7 +1,7 @@
 {
   "name": "vue-year-calendar",
+  "main": "index.js",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -11,7 +11,9 @@
   "dependencies": {
     "dayjs": "^1.7.7",
     "gh-pages": "^2.0.1",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
@@ -25,8 +27,6 @@
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.17"
   }
 }
