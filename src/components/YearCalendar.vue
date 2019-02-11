@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="vue-calendar__container">
     <div class="container__year">
       <!-- <span><button @click="addYear(-1)">back</button></span> -->
       <span
@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.container
+.vue-calendar__container
   border-radius: 2px
   min-width: 0
   position: relative
