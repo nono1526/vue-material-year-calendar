@@ -1,4 +1,4 @@
-# vue-year-calendar component
+# vue-material-year-calendar component
 depend on dayjs
 ## `<year-calendar>`
 ### PROPS
