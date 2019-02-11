@@ -2,7 +2,7 @@
   <div id="app">
     <year-calendar
       v-model="year"
-      :activeDates="activeDates"
+      :activeDates.sync="activeDates"
       @toggleDate="toggleDate"
     ></year-calendar>
   </div>
@@ -26,6 +26,8 @@ export default {
     toggleDate (dateInfo) {
       console.log(dateInfo)
     }
+  },
+  mounted () {
   }
 }
 </script>
