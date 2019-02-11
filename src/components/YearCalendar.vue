@@ -31,7 +31,7 @@
 import dayjs from 'dayjs'
 import MonthCalendar from './MonthCalendar'
 export default {
-  name: 'year-candelar',
+  name: 'year-calendar',
   props: {
     activeDates: {
       type: Array,
