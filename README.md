@@ -1,4 +1,4 @@
-# vue-perpetual-calendar
+# vue-year-calendar
 
 ## Project setup
 ```
