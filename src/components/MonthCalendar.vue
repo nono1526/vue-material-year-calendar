@@ -212,7 +212,7 @@ export default {
       top -5px
       right -5px
       border-radius 50%
-      background-image url('../../public/baseline-remove_circle-24px.svg')
+      background-image url('../assets/baseline-remove_circle-24px.svg')
       background-size 100% 100%
   & .calendar__day--otherMonth
     color: #eaeaea
