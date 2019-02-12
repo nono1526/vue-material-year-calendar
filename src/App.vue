@@ -24,8 +24,10 @@ export default {
   },
   methods: {
     toggleDate (dateInfo) {
-      console.log(dateInfo)
     }
+  },
+  mounted () {
+    this.activeDates.push('2018-01-02')
   }
 }
 </script>

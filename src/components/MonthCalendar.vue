@@ -110,7 +110,7 @@ export default {
     mouseUp () {
       this.isMouseDown = false
     },
-    setActiveDate () {
+    toggleDate (active) {
       const activeMonth = dayjs()
         .set('year', this.year)
         .set('month', this.month - 1)
@@ -122,24 +122,38 @@ export default {
         let activeDate = active.date()
         let row = Math.floor(activeDate / 7)
         let activeArrayKey = (activeDate % 7 - 1 + firstDay) + 7 * row
-        this.showDays[activeArrayKey].active = true // to array index
+        this.showDays[activeArrayKey].active = active // to array index
       })
     }
   },
   watch: {
     year (val) {
       this.initCalendar()
-      this.setActiveDate()
+      this.toggleDate(true)
     },
-    activeDates () {
-      this.setActiveDate()
+    activeDates (after, before) {
+      const countBefore = before.length
+      const countAfter = after.length
+      // 先判斷是多還是少
+      if (countBefore < countAfter) {
+        const diffDate = after.filter(date => before.indexOf(date) === -1)[0]
+        let activeDate = this.showDays.find(day => day.value === dayjs(diffDate).date())
+        activeDate.active = true
+      } else {
+        const diffDate = before.filter(date => after.indexOf(date) === -1)[0]
+        let activeDate = this.showDays.find(day => day.value === dayjs(diffDate).date())
+        activeDate.active = false
+      }
+      // this.activeDates.find()
+
+      this.toggleDate(false)
     }
   },
   created () {
     this.initCalendar()
   },
   mounted () {
-    this.setActiveDate()
+    this.toggleDate(true)
   }
 }
 </script>
