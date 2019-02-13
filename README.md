@@ -16,7 +16,7 @@ depend on dayjs
         *  date `String` YYYY-mm-dd 被觸發的日期
         *  selected `Boolean` 被選擇日期的狀態
 ### EXAMPLE
-```
+```vue
 <template>
   <div id="app">
     <YearCalendar
