@@ -1,7 +1,7 @@
 {
   "name": "vue-material-year-calendar",
   "main": "index.js",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -32,9 +32,9 @@
   "description": "萬年曆 TW Number 1",
   "repositories": [
     {
-        "type": "git",
-        "url": "https://github.com/nono1526/vue-year-calendar" 
-    } 
+      "type": "git",
+      "url": "https://github.com/nono1526/vue-year-calendar"
+    }
   ],
   "license": "WTFPL"
 }

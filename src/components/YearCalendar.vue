@@ -37,6 +37,7 @@ export default {
       type: Array,
       default: () => []
     },
+    // value 為從外層傳進來的 v-model="year"
     value: {
       type: [String, Number],
       default: dayjs().year()
@@ -44,10 +45,6 @@ export default {
   },
   components: {
     MonthCalendar
-  },
-  data () {
-    return {
-    }
   },
   computed: {
     month () {
@@ -61,7 +58,7 @@ export default {
     },
     activeYear: {
       get () {
-        return parseInt(this.value)
+        return parseInt(this.value) // this.value 為從外層傳進來的 v-model="year"
       },
       set (val) {
         this.$emit('input', val)
@@ -69,9 +66,6 @@ export default {
     }
   },
   methods: {
-    updateActiveDates (date) {
-
-    },
     changeYear (idx) {
       this.activeYear = idx + this.activeYear - 3
     },

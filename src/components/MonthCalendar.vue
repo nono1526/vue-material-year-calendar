@@ -5,20 +5,9 @@
     @mouseleave.stop="mouseUp"
   >
     <div class="calendar__title">{{ month + ' 月' }}</div>
-      <div
-        class="calendar__body">
-        <div
-        v-for="(day, key) in 7"
-        :key="`title${day}`"
-        class="calendar__day"
-      >
-        {{ showDayTitle(key) }}
-      </div>
-      <div
-        v-for="(dayObj, key) in showDays"
-        class="calendar__day"
-        :key="`day${key}`"
-      >
+    <div class="calendar__body">
+      <div v-for="(day, key) in 7" :key="`title${day}`" class="calendar__day">{{ showDayTitle(key) }}</div>
+      <div v-for="(dayObj, key) in showDays" class="calendar__day" :key="`day${key}`">
         <div
           @mouseover="dragDay(arguments,dayObj)"
           @mousedown="mouseDown(dayObj)"
@@ -27,7 +16,6 @@
             'calendar__day--otherMonth': dayObj.isOtherMonth,
             'calendar--active': dayObj.active
           }"
-
         >
           {{ dayObj.value }}
         </div>
@@ -194,6 +182,7 @@ export default {
     justify-content flex-start
     align-content flex-start
     padding: 0px 20px
+    min-width: 194px
   .calendar__day
     flex 14.28%
     display flex
