@@ -75,8 +75,7 @@ export default {
         })
       this.showDays = fullCol
 
-      // to do : 可以把 toggleDate 的內容合併在 initCalendar 裡。
-      // this.toggleDate(true)
+      // 把 toggleDate 的內容合併在 initCalendar 裡。
       this.activeDates.forEach(date => {
         let dayjsObj = dayjs(date)
         if (dayjsObj.year() !== this.year) return
@@ -86,7 +85,7 @@ export default {
         this.showDays[activeArrayKey].active = true // to array index
       })
     },
-    // 把 toggleDate 合併到 initCalendar 中。 丁丁怕出錯還不敢刪
+    // 把 toggleDate 合併到 initCalendar 中。 (丁丁怕出錯還不敢刪)
     // toggleDate (trueOrFalse) {
     //   const activeMonth = dayjs()
     //     .set('year', this.year)
