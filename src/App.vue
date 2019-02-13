@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       year: 2019,
-      activeDates: ['2019-01-01']
+      activeDates: ['2019-01-01', '2019-01-02', '2019-01-03']
     }
   },
   methods: {
@@ -44,10 +44,6 @@ export default {
         return self.indexOf(item) === pos
       }).sort()
     }
-  },
-  mounted () {
-    this.activeDates.push('2019-01-02')
-    this.activeDates.push('2019-01-03')
   }
 }
 </script>
