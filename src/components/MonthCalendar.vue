@@ -182,6 +182,7 @@ export default {
     justify-content flex-start
     align-content flex-start
     padding: 0px 20px
+    min-width: 194px
   .calendar__day
     flex 14.28%
     display flex
