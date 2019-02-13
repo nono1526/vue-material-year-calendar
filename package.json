@@ -32,9 +32,9 @@
   "description": "萬年曆 TW Number 1",
   "repositories": [
     {
-        "type": "git",
-        "url": "https://github.com/nono1526/vue-year-calendar" 
-    } 
+      "type": "git",
+      "url": "https://github.com/nono1526/vue-year-calendar"
+    }
   ],
   "license": "WTFPL"
 }

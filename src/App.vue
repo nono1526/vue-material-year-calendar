@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <button @click="add_sat_and_sun_of_year">載入週六日</button>
     <year-calendar
       v-model="year"
       :activeDates.sync="activeDates"
@@ -10,6 +11,7 @@
 
 <script>
 import YearCalendar from './components/YearCalendar.vue'
+import dayjs from 'dayjs'
 
 export default {
   name: 'app',
@@ -18,16 +20,34 @@ export default {
   },
   data () {
     return {
-      year: 2018,
-      activeDates: ['2018-01-01', '2018-12-06', '2018-02-20', '2018-01-14', '2018-01-13', '2018-01-15', '2019-01-01', '2017-06-14']
+      year: 2019,
+      activeDates: ['2019-01-01']
     }
   },
   methods: {
     toggleDate (dateInfo) {
+    },
+    add_sat_and_sun_of_year () {
+      let theDate = dayjs(`${this.year}-01-01`)
+
+      while (theDate.diff(theDate.endOf('year'), 'day') !== 0) {
+        console.log('', theDate.format('YYYY-MM-DD'), '其值為:', theDate.day())
+        if (theDate.day() === 6 || theDate.day() === 0) {
+          // 將週六或週日加入 activeDates 中
+          this.activeDates.push(theDate.format('YYYY-MM-DD'))
+        }
+        theDate = theDate.add(1, 'day')
+      }
+
+      // remove duplicate key
+      this.activeDates = this.activeDates.filter(function (item, pos, self) {
+        return self.indexOf(item) === pos
+      }).sort()
     }
   },
   mounted () {
-    this.activeDates.push('2018-01-02')
+    this.activeDates.push('2019-01-02')
+    this.activeDates.push('2019-01-03')
   }
 }
 </script>
