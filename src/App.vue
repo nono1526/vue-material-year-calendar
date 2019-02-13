@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <button @click="add_sat_and_sun_of_year">載入週六日</button>
+    <button @click="remove_sat_and_sun_of_year">移除週六日</button>
     <year-calendar
       v-model="year"
       :activeDates.sync="activeDates"
@@ -43,6 +44,14 @@ export default {
       this.activeDates = this.activeDates.filter(function (item, pos, self) {
         return self.indexOf(item) === pos
       }).sort()
+    },
+    remove_sat_and_sun_of_year () {
+      for (let i = this.activeDates.length - 1; i >= 0; i--) {
+        let date = this.activeDates[i]
+        if (dayjs(date).year() === this.year && (dayjs(date).day() === 6 || dayjs(date).day() === 0)) {
+          this.activeDates.splice(i, 1)
+        }
+      }
     }
   }
 }

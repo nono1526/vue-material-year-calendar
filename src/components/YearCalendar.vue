@@ -50,6 +50,7 @@ export default {
     month () {
       const month = {}
       this.activeDates.forEach(date => {
+        if (dayjs(date).year() !== this.value) return // 讓2020年1月的資料，不會放到 2019年的1月資料裡
         let m = (dayjs(date).month() + 1).toString()
         if (!month[m]) month[m] = []
         month[m].push(date)
