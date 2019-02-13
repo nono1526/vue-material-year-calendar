@@ -26,12 +26,12 @@ export default {
   },
   methods: {
     toggleDate (dateInfo) {
+      console.log(dateInfo)
     },
     add_sat_and_sun_of_year () {
       let theDate = dayjs(`${this.year}-01-01`)
 
       while (theDate.diff(theDate.endOf('year'), 'day') !== 0) {
-        console.log('', theDate.format('YYYY-MM-DD'), '其值為:', theDate.day())
         if (theDate.day() === 6 || theDate.day() === 0) {
           // 將週六或週日加入 activeDates 中
           this.activeDates.push(theDate.format('YYYY-MM-DD'))
