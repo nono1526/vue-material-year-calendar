@@ -21,7 +21,7 @@ depend on dayjs
   <div id="app">
     <YearCalendar
       v-model="year"
-      :activeDates="activeDates"
+      :activeDates.sync ="activeDates"
       @toggleDate="toggleDate"
     ></YearCalendar>
   </div>
