@@ -85,30 +85,12 @@ export default {
         this.showDays[activeArrayKey].active = true // to array index
       })
     },
-    // 把 toggleDate 合併到 initCalendar 中。 (丁丁怕出錯還不敢刪)
-    // toggleDate (trueOrFalse) {
-    //   const activeMonth = dayjs()
-    //     .set('year', this.year)
-    //     .set('month', this.month - 1)
-    //   let firstDay = activeMonth.startOf('month').day() - 1
-    //   if (firstDay < 0) firstDay += 7
-    //   this.activeDates.forEach(date => {
-    //     let dayjsObj = dayjs(date)
-    //     if (dayjsObj.year() !== this.year) return
-    //     let activeDate = dayjsObj.date()
-    //     let row = Math.floor(activeDate / 7)
-    //     let activeArrayKey = (activeDate % 7 - 1 + firstDay) + 7 * row
-    //     this.showDays[activeArrayKey].active = trueOrFalse // to array index
-    //   })
-    // },
     showDayTitle (day) {
       const dayMapping = ['一', '二', '三', '四', '五', '六', '日']
       return dayMapping[day]
     },
     toggleDay (dayObj) {
       if (dayObj.isOtherMonth) return
-      // 註掉下面這一行，『單向資料流』原則：將內層的事件傳到外層，由外層元件改變資料後，再由內層元件做對s應的改變。
-      // dayObj.active = !dayObj.active
       this.$emit('toggleDate', {
         month: this.month,
         date: dayObj.value,
