@@ -1,5 +1,5 @@
 # vue-material-year-calendar component
-[[DEMO](https://nono1526.github.io/vue-year-calendar/)]-[[GitHub](https://github.com/nono1526/vue-material-year-calendar)] 
+[[DEMO](https://nono1526.github.io/vue-material-year-calendar)]-[[GitHub](https://github.com/nono1526/vue-material-year-calendar)] 
 用 Vue.js v2.5 做的萬年曆
 depend on dayjs
 ## `<YearCalendar>`
