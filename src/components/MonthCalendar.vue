@@ -9,7 +9,7 @@
       <div v-for="(day, key) in 7" :key="`title${day}`" class="calendar__day">{{ showDayTitle(key) }}</div>
       <div v-for="(dayObj, key) in showDays" class="calendar__day" :key="`day${key}`">
         <div
-          @mouseover="dragDay(arguments,dayObj)"
+          @mouseover.prevent="dragDay(dayObj)"
           @mousedown="mouseDown(dayObj)"
           class="day"
           :class="{
@@ -97,7 +97,7 @@ export default {
         selected: dayObj.active
       })
     },
-    dragDay (arg, dayObj) {
+    dragDay (dayObj) {
       if (this.isMouseDown) this.toggleDay(dayObj)
     },
     mouseDown (dayObj) {
@@ -180,10 +180,8 @@ export default {
     align-items center
     &:not(.calendar__day--otherMonth):hover
       background-color rgba(#666, 0.1)
-      border-radius 5px
     &.calendar--active
       background-color: rgba(#FFBABA, .5)
-      border-radius 3px
       color #BCBCBC
       position relative
     &.calendar--active:after
@@ -198,6 +196,7 @@ export default {
       border-radius 50%
       background-image url('../assets/baseline-remove_circle-24px.svg')
       background-size 100% 100%
+      z-index: 1
   & .calendar__day--otherMonth
     color: #eaeaea
     cursor: auto
