@@ -3,7 +3,7 @@
 用 Vue.js v2.5 做的萬年曆
 depend on dayjs
 ## `<YearCalendar>`
-可使用滑鼠拖曳快速選擇日期，簡易效果如下
+可使用滑鼠拖曳快速選擇日期，簡易效果如下  
 ![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)
 ### PROPS
 #### `v-model` 綁定年份 `String | Number` (required)
