@@ -94,7 +94,7 @@ export default {
       this.$emit('toggleDate', {
         month: this.month,
         date: dayObj.value,
-        selected: dayObj.active
+        selected: !dayObj.active
       })
     },
     dragDay (dayObj) {
