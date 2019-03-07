@@ -27,6 +27,7 @@ export default {
   },
   methods: {
     toggleDate (dateInfo) {
+       console.log(dateInfo)
     },
     add_sat_and_sun_of_year () {
       let theDate = dayjs(`${this.year}-01-01`)
