@@ -19,6 +19,9 @@ depend on dayjs
     * dateInfo `Object`
         *  date `String` YYYY-mm-dd 被觸發的日期
         *  selected `Boolean` 被選擇日期的狀態
+    * lang `String` 語系
+        * tw `繁體中文`
+        * en `英文`
 ### EXAMPLE
 ```vue
 <template>

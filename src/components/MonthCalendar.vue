@@ -4,9 +4,9 @@
     @mouseup="mouseUp"
     @mouseleave.stop="mouseUp"
   >
-    <div class="calendar__title">{{ month + ' 月' }}</div>
+    <div class="calendar__title">{{ monthTitle }}</div>
     <div class="calendar__body">
-      <div v-for="(day, key) in 7" :key="`title${day}`" class="calendar__day">{{ showDayTitle(key) }}</div>
+      <div v-for="(day, key) in 7" :key="`title${day}`" class="calendar__day day__weektitle" :style="{fontSize: weekTitleFontSizeAdjustLang}">{{ showDayTitle(key) }}</div>
       <div v-for="(dayObj, key) in showDays" class="calendar__day" :key="`day${key}`">
         <div
           @mouseover="dragDay(dayObj)"
@@ -41,12 +41,32 @@ export default {
     year: {
       type: [String, Number],
       default: () => dayjs().year()
+    },
+    lang: {
+      type: String,
+      default: 'en'
     }
   },
   data () {
     return {
       showDays: [],
       isMouseDown: false
+    }
+  },
+  computed: {
+    weekTitleFontSizeAdjustLang () {
+      const fontSizeMapping = {
+        tw: '16px',
+        en: '14px'
+      }
+      return fontSizeMapping[this.lang]
+    },
+    monthTitle () {
+      const monthMapping = {
+        tw: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      }
+      return monthMapping[this.lang][this.month - 1]
     }
   },
   methods: {
@@ -86,8 +106,11 @@ export default {
       })
     },
     showDayTitle (day) {
-      const dayMapping = ['一', '二', '三', '四', '五', '六', '日']
-      return dayMapping[day]
+      const dayMapping = {
+        tw: ['一', '二', '三', '四', '五', '六', '日'],
+        en: ['Mu', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+      }
+      return dayMapping[this.lang][day]
     },
     toggleDay (dayObj) {
       if (dayObj.isOtherMonth) return

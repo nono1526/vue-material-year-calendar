@@ -2,10 +2,15 @@
   <div id="app">
     <button @click="add_sat_and_sun_of_year">載入週六日</button>
     <button @click="remove_sat_and_sun_of_year">移除週六日</button>
+    <select v-model="lang">
+      <option value="tw">繁體中文</option>
+      <option value="en">English</option>
+    </select>
     <year-calendar
       v-model="year"
       :activeDates.sync="activeDates"
       @toggleDate="toggleDate"
+      :lang="lang"
     ></year-calendar>
   </div>
 </template>
@@ -21,6 +26,7 @@ export default {
   },
   data () {
     return {
+      lang: 'tw',
       year: 2019,
       activeDates: ['2019-01-01', '2019-01-02', '2019-01-03']
     }

@@ -21,6 +21,7 @@
         :month="n"
         :activeDates="month[n]"
         @toggleDate="toggleDate"
+        :lang="lang"
       >
       </month-calendar>
     </div>
@@ -41,6 +42,10 @@ export default {
     value: {
       type: [String, Number],
       default: dayjs().year()
+    },
+    lang: {
+      type: String,
+      default: 'en'
     }
   },
   components: {
