@@ -28,12 +28,12 @@ export default {
     return {
       lang: 'tw',
       year: 2019,
-      activeDates: ['2019-01-01', '2019-01-02', '2019-01-03']
+      activeDates: ['2019-03-13', '2019-12-31']
     }
   },
   methods: {
     toggleDate (dateInfo) {
-       console.log(dateInfo)
+      console.log(dateInfo)
     },
     add_sat_and_sun_of_year () {
       let theDate = dayjs(`${this.year}-01-01`)
