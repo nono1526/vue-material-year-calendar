@@ -36,7 +36,30 @@ export default {
   props: {
     activeDates: {
       type: Array,
-      default: () => []
+      default: () => [],
+      validator: (dateArray) => {
+        let isGood = true
+        dateArray.forEach(date => {
+          // 以下程式碼參考「How to validate date with format mm/dd/yyyy in JavaScript?」in Stackoverflow
+          // 由於 「^\d{4}\-\d{1,2}\-\d{1,2}$」會被ESLint 判為錯誤，所以暫時關閉 EsLint 對下一行的驗證 by丁丁
+          // eslint-disable-next-line no-useless-escape
+          if (!/^\d{4}\-\d{1,2}\-\d{1,2}$/.test(date)) {
+            isGood = false
+          }
+          // Parse the date parts to integers
+          var parts = date.split('-')
+          var day = parseInt(parts[2], 10)
+          var month = parseInt(parts[1], 10)
+          var year = parseInt(parts[0], 10)
+
+          if (year < 1000 || year > 3000 || month === 0 || month > 12) { return false }
+          var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
+          if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) { monthLength[1] = 29 }
+          if (day > 0 && day <= monthLength[month - 1]) isGood = true
+          else isGood = false
+        })
+        if (isGood) { return true } else return false
+      }
     },
     // value 為從外層傳進來的 v-model="year"
     value: {
@@ -50,13 +73,6 @@ export default {
   },
   components: {
     MonthCalendar
-  },
-  created () {
-    this.activeDates.forEach(el => {
-      if (this.isValidate(el) === false) {
-        throw new Error('Invalid date:' + el)
-      }
-    })
   },
   computed: {
     month () {
@@ -79,30 +95,6 @@ export default {
     }
   },
   methods: {
-    isValidate (dateString) {
-      // 測試是否為 YYYY-MM-DD 格式，以及不合理日期排除"
-
-      // https://stackoverflow.com/questions/6177975/how-to-validate-date-with-format-mm-dd-yyyy-in-javascript
-      // 由於 「^\d{4}\-\d{1,2}\-\d{1,2}$」會被ESLint 判為錯誤，所以以下暫時關閉 EsLint 對這一行的驗證
-      // eslint-disable-next-line no-useless-escape
-      if (!/^\d{4}\-\d{1,2}\-\d{1,2}$/.test(dateString)) {
-        return false
-      }
-      // Parse the date parts to integers
-      var parts = dateString.split('-')
-      var day = parseInt(parts[2], 10)
-      var month = parseInt(parts[1], 10)
-      var year = parseInt(parts[0], 10)
-      // console.log(year + month + day)
-
-      // Check the ranges of month and year
-      if (year < 1000 || year > 3000 || month === 0 || month > 12) { return false }
-      var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
-      // Adjust for leap years
-      if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) { monthLength[1] = 29 }
-      // Check the range of the day
-      return day > 0 && day <= monthLength[month - 1]
-    },
     changeYear (idx) {
       this.activeYear = idx + this.activeYear - 3
     },

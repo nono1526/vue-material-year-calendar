@@ -79,7 +79,7 @@ export default {
       let firstDay = activeMonth.startOf('month').day() - 1
       if (firstDay < 0) firstDay += 7
       const lastDate = activeMonth.endOf('month').date()
-      const weekRow = firstDay === 6 ? 6 : 5
+      const weekRow = firstDay >= 5 ? 6 : 5
       const WEEK = 7
       let day = 0
       const fullCol = Array.from(Array(weekRow * WEEK).keys())
