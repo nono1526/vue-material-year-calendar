@@ -28,7 +28,7 @@ export default {
     return {
       lang: 'tw',
       year: 2019,
-      activeDates: ['2019-03-13', '2019-12-31']
+      activeDates: ['2019-03-13', '2019-12-31', '2019-99-99']
     }
   },
   methods: {

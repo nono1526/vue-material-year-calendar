@@ -47,18 +47,17 @@ export default {
             isGood = false
           }
           // Parse the date parts to integers
-          var parts = date.split('-')
-          var day = parseInt(parts[2], 10)
-          var month = parseInt(parts[1], 10)
-          var year = parseInt(parts[0], 10)
+          let parts = date.split('-')
+          let day = parseInt(parts[2], 10)
+          let month = parseInt(parts[1], 10)
+          let year = parseInt(parts[0], 10)
 
-          if (year < 1000 || year > 3000 || month === 0 || month > 12) { return false }
-          var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
-          if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) { monthLength[1] = 29 }
-          if (day > 0 && day <= monthLength[month - 1]) isGood = true
-          else isGood = false
+          if (year < 1000 || year > 3000 || month === 0 || month > 12) isGood = false
+          let monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
+          if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) monthLength[1] = 29
+          if (!(day > 0 && day <= monthLength[month - 1])) isGood = false
         })
-        if (isGood) { return true } else return false
+        return isGood
       }
     },
     // value 為從外層傳進來的 v-model="year"
