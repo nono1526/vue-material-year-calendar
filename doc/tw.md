@@ -37,7 +37,7 @@ npm install vue-material-year-calendar --save
     v-model="year"
     :activeDates.sync ="activeDates"
     @toggleDate="toggleDate"
-    :lang="tw"
+    lang="tw"
   ></YearCalendar>
 </template>
 
