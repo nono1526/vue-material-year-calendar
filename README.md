@@ -11,9 +11,11 @@ English | [繁體中文](./doc/tw.md)
 * 🕒 depend on [dayjs](https://github.com/iamkun/dayjs)
 * 🍀 by Vue.js  
 
-### [Simple Live Demo](https://nono1526.github.io/vue-material-year-calendar)
+### <a href="https://nono1526.github.io/vue-material-year-calendar" target="_blank">Simple Live Demo</a>
+
 
 ## Basic usage  
+
 ![Basic_demo](https://media.giphy.com/media/LXQxkdBrhmVzOEMbQf/giphy.gif)  
 ## Drag and Drop
 ![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)  
