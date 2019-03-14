@@ -26,7 +26,7 @@ export default {
   },
   data () {
     return {
-      lang: 'tw',
+      lang: 'en',
       year: 2019,
       activeDates: ['2019-03-13', '2019-12-31']
     }
