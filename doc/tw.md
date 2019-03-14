@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     toggleDate (dateInfo) {
-      console.log(dateInfo)
+      console.log(dateInfo)  // { date: '2010-10-23', selected: true }
     }
   }
 }
