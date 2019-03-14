@@ -71,6 +71,7 @@ The year to be display.
 
 ### activeDates.sync
    * Type: `Array`
+   * Required: `true`
    * Default: `[]`
 
 Your selected dates.
