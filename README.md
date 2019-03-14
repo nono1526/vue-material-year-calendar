@@ -17,7 +17,7 @@ English | [繁體中文](./doc/tw.md)
 ## Basic usage  
 
 ![Basic_demo](https://media.giphy.com/media/LXQxkdBrhmVzOEMbQf/giphy.gif)  
-## Drag and Drop
+## Draggable
 ![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)  
 
 ---
