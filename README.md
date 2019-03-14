@@ -1,16 +1,33 @@
 English | [繁體中文](./doc/tw.md)
-# vue-material-year-calendar component  
+# Vue Material Year Calendar
+<p align="center">
 <a href="https://www.npmjs.com/package/vue-material-year-calendar"><img src="https://img.shields.io/npm/v/vue-material-year-calendar.svg"  alt="Versions"></a> <a  href="https://www.npmjs.com/package/vue-material-year-calendar"><img  src="https://img.shields.io/npm/dm/vue-material-year-calendar.svg"  alt="Downloads"></a> <a  href="https://www.npmjs.com/package/vue-material-year-calendar"><img src="https://img.shields.io/npm/l/vue-material-year-calendar.svg"  alt="License"></a>
+</p>  
 
-[[DEMO](https://nono1526.github.io/vue-material-year-calendar)]-[[GitHub](https://github.com/nono1526/vue-material-year-calendar)] 
-用 Vue.js v2.5 做的萬年曆
-depend on dayjs
-## `<YearCalendar>`
-基本用法  
+> There is no full year (12 months on a page) calendar right now, the Vue-material-year-calendar is designed to solve this problem.  
+
+* 🔥 12 Months on a page
+* 🌈 Material style
+* 🕒 depend on [dayjs](https://github.com/iamkun/dayjs)
+* 🍀 by Vue.js  
+
+### [Simple Live Demo](https://nono1526.github.io/vue-material-year-calendar)
+
+## Basic usage  
 ![Basic_demo](https://media.giphy.com/media/LXQxkdBrhmVzOEMbQf/giphy.gif)  
-可使用滑鼠拖曳快速選擇日期，簡易效果如下  
-![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)
-### EXAMPLE
+## Drag and Drop
+![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)  
+
+---
+## Getting Started
+
+### 📚 Installation
+
+```console
+npm install vue-material-year-calendar --save
+```
+
+### 📚 Example
 ```vue
 <template>
   <YearCalendar
@@ -43,21 +60,56 @@ export default {
 ```
 
 
-## Docs
-### PROPS
-1. `v-model` 綁定年份 `String | Number` (required)
-所使用的預設年份
-2. `activeDates.sync` 預設選擇日期 `Array` (default [])
-需使用 .sync 來雙向同步日期資訊
-傳入預設被選擇的日期 Ex: `['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01']`
-3. `lang` `String` 語系 `en`: English, `tw`: 繁體中文
-   * `default`: `en`
+## 📚 props
+### v-model
+   * Type: `String` | `Number`
+   * Required: `true`
+
+The year to be display.
+
+### activeDates.sync
+   * Type: `Array`
+   * Default: `[]`
+
+Your selected dates.
+
+ex: 
+```javascript
+:activeDates.sync="['2019-01-01', '2019-01-02', '2020-01-01']"
+```
 
 
-### EVENT
-#### @toggleDate 當所選日期被使用者所改變
-* params
-    * dateInfo `Object`
-        *  date `String` YYYY-mm-dd 被觸發的日期
-        *  selected `Boolean` 被選擇日期的狀態
+### lang
+   * Type: `String`
+   * Default: `en`
+
+Choose language to displayed.
+
+`en`: English, `tw`: 繁體中文
+
+
+## 📚 event
+### @toggleDate
+   * Type: `function`
+
+Function will be called when you select/unselect a date.
+
+ex: 
+
+```vue
+<template>
+  <YearCalendar
+    @toggleDate="myToggleDate"
+  ></YearCalendar>
+</template>
+
+<script>
+  .....
+  methods: {
+    myToggleDate (dateInfo) {
+      console.log(dateInfo) // { date: '2010-10-23', selected: true }
+    }
+  }
+</script>
+```
 
