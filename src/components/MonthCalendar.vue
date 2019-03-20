@@ -108,7 +108,7 @@ export default {
     showDayTitle (day) {
       const dayMapping = {
         tw: ['一', '二', '三', '四', '五', '六', '日'],
-        en: ['Mu', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+        en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
       }
       return dayMapping[this.lang][day]
     },
