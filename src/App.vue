@@ -5,6 +5,7 @@
     <select v-model="lang">
       <option value="tw">繁體中文</option>
       <option value="en">English</option>
+      <option value="pt">Português</option>
     </select>
     <year-calendar
       v-model="year"
@@ -26,7 +27,7 @@ export default {
   },
   data () {
     return {
-      lang: 'en', // 'en' or 'tw'
+      lang: 'en', // 'en', 'tw', 'pt'
       year: 2019,
       activeDates: ['2019-03-13', '2019-12-31']
     }
