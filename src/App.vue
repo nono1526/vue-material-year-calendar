@@ -6,8 +6,13 @@
       <option value="tw">繁體中文</option>
       <option value="en">English</option>
     </select>
+    <label for="">
+      Show years selector?
+      <input type="checkbox" v-model="showYearSelector" >
+    </label>
     <year-calendar
       v-model="year"
+      :showYearSelector="showYearSelector"
       :activeDates.sync="activeDates"
       @toggleDate="toggleDate"
       :lang="lang"
@@ -28,6 +33,7 @@ export default {
     return {
       lang: 'en', // 'en' or 'tw'
       year: 2019,
+      showYearSelector: true,
       activeDates: ['2019-03-13', '2019-12-31']
     }
   },
