@@ -12,10 +12,10 @@
     </label>
     <year-calendar
       v-model="year"
-      :showYearSelector="showYearSelector"
       :activeDates.sync="activeDates"
       @toggleDate="toggleDate"
       :lang="lang"
+      :showYearSelector="showYearSelector"
     ></year-calendar>
   </div>
 </template>
@@ -33,8 +33,8 @@ export default {
     return {
       lang: 'en', // 'en' or 'tw'
       year: 2019,
-      showYearSelector: true,
-      activeDates: ['2019-03-13', '2019-12-31']
+      activeDates: ['2019-03-13', '2019-12-31'],
+      showYearSelector: true
     }
   },
   methods: {
