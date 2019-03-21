@@ -1,7 +1,7 @@
 {
   "name": "vue-material-year-calendar",
   "main": "index.js",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
