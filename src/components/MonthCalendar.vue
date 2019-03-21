@@ -12,10 +12,7 @@
           @mouseover="dragDay(dayObj)"
           @mousedown="mouseDown(dayObj)"
           class="day"
-          :class="{
-            'calendar__day--otherMonth': dayObj.isOtherMonth,
-            'calendar--active': dayObj.active
-          }"
+          :class="classList(dayObj)"
         >
           {{ dayObj.value }}
         </div>
@@ -45,6 +42,10 @@ export default {
     lang: {
       type: String,
       default: 'en'
+    },
+    defaultClassName: {
+      type: String,
+      default: () => ''
     }
   },
   data () {
@@ -97,13 +98,25 @@ export default {
 
       // 把 toggleDate 的內容合併在 initCalendar 裡。
       this.activeDates.forEach(date => {
-        let dayjsObj = dayjs(date)
-        if (dayjsObj.year() !== this.year) return
-        let activeDate = dayjsObj.date()
-        let row = Math.floor(activeDate / 7)
-        let activeArrayKey = (activeDate % 7 - 1 + firstDay) + 7 * row
-        this.showDays[activeArrayKey].active = true // to array index
-      })
+        let oDate;
+
+        if (typeof date === "string") {
+            oDate = {
+                date: date,
+                className: this.defaultClassName
+            };
+        } else if (typeof date === "object") {
+            oDate = date;
+        }
+
+        let dayjsObj = dayjs(oDate.date);
+        if (dayjsObj.year() !== this.year) return;
+        let activeDate = dayjsObj.date();
+        let row = Math.floor(activeDate / 7);
+        let activeArrayKey = (activeDate % 7) - 1 + firstDay + 7 * row;
+        this.showDays[activeArrayKey].active = true; // to array index
+        this.showDays[activeArrayKey].className = oDate.className;
+      });
     },
     showDayTitle (day) {
       const dayMapping = {
@@ -117,7 +130,8 @@ export default {
       this.$emit('toggleDate', {
         month: this.month,
         date: dayObj.value,
-        selected: !dayObj.active
+        selected: !dayObj.active,
+        className: dayObj.className || this.defaultClassName
       })
     },
     dragDay (dayObj) {

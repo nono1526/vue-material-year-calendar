@@ -6,11 +6,19 @@
       <option value="tw">繁體中文</option>
       <option value="en">English</option>
     </select>
+
+    <select v-model="defaultClassName">
+      <option selected value="">(none)</option>
+      <option value="red">red</option>
+      <option value="blue">blue</option>
+    </select>
+
     <year-calendar
       v-model="year"
       :activeDates.sync="activeDates"
       @toggleDate="toggleDate"
       :lang="lang"
+      :defaultClassName="defaultClassName"
     ></year-calendar>
   </div>
 </template>
@@ -28,7 +36,9 @@ export default {
     return {
       lang: 'en', // 'en' or 'tw'
       year: 2019,
-      activeDates: ['2019-03-13', '2019-12-31']
+      activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
+      // activeDates: ['2019-03-12', '2019-03-16'],
+      defaultClassName: ''
     }
   },
   methods: {
@@ -70,4 +80,12 @@ export default {
 #app
   padding 60px
   background-color #eaeaea
+
+.day.calendar--active
+  &.blue
+    background-color: #00a !important
+    color: white !important
+  &.red
+    background-color: #a00 !important
+    color: white !important
 </style>
