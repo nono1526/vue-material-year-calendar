@@ -38,6 +38,7 @@ npm install vue-material-year-calendar --save
     :activeDates.sync ="activeDates"
     @toggleDate="toggleDate"
     lang="tw"
+    :showYearSelector="showYearSelector"
   ></YearCalendar>
 </template>
 
@@ -49,7 +50,8 @@ export default {
   data () {
     return {
       year: 2019,
-      activeDates: ['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01']
+      activeDates: ['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01'],
+      showYearSelector: true
     }
   },
   methods: {
@@ -91,6 +93,16 @@ ex:
 
 `en`: English, `tw`: 繁體中文。 Taiwan NO.1
 
+### showYearSelector 
+   * Type: `Boolean`
+   * Default: true
+
+是否顯示選擇年份的 Bar
+
+ex: 
+```javascript
+:showYearSelector="false"
+```
 
 ## 📚 事件
 ### @toggleDate
