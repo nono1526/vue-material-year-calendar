@@ -37,6 +37,7 @@ npm install vue-material-year-calendar --save
     :activeDates.sync ="activeDates"
     @toggleDate="toggleDate"
     lang="tw"
+    :showYearSelector="showYearSelector"
   ></YearCalendar>
 </template>
 
@@ -48,7 +49,8 @@ export default {
   data () {
     return {
       year: 2019,
-      activeDates: ['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01']
+      activeDates: ['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01'],
+      showYearSelector: true
     }
   },
   methods: {
@@ -90,6 +92,16 @@ Choose language to displayed.
 
 `en`: English, `tw`: 繁體中文
 
+### showYearSelector 
+   * Type: `Boolean`
+   * Default: true
+
+Show or hide the years selector on top of the calendar.
+
+ex: 
+```javascript
+:showYearSelector="false"
+```
 
 ## 📚 event
 ### @toggleDate
