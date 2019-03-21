@@ -143,6 +143,16 @@ export default {
     },
     mouseUp () {
       this.isMouseDown = false
+    },
+    classList (dayObj) {
+      let oClassList = {
+        'calendar__day--otherMonth': dayObj.isOtherMonth,
+        'calendar--active': dayObj.active
+      }
+
+      if (dayObj.active) oClassList[dayObj.className] = true
+
+      return oClassList
     }
   },
   watch: {
