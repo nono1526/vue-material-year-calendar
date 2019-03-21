@@ -1,35 +1,36 @@
-English | [繁體中文](./doc/tw.md)
+[English](../README.md) | 繁體中文
 # Vue Material Year Calendar
 <p align="center">
 <a href="https://www.npmjs.com/package/vue-material-year-calendar"><img src="https://img.shields.io/npm/v/vue-material-year-calendar.svg"  alt="Versions"></a> <a  href="https://www.npmjs.com/package/vue-material-year-calendar"><img  src="https://img.shields.io/npm/dm/vue-material-year-calendar.svg"  alt="Downloads"></a> <a  href="https://www.npmjs.com/package/vue-material-year-calendar"><img src="https://img.shields.io/npm/l/vue-material-year-calendar.svg"  alt="License"></a>
 </p>  
 
-> There is no full year (12 months on a page) calendar right now, the Vue-material-year-calendar is designed to solve this problem.  
+> 目前2019年3月為止，市場上還沒有能一次顯示12個月份的月曆元件。 vue-material-year-calendar 來解決此問題。 
 
-* 🔥 12 Months on a page
-* 🌈 Material style
-* 🕒 depend on [dayjs](https://github.com/iamkun/dayjs)
-* 🍀 by Vue.js  
+* 🔥 一次顯示12個月份
+* 🌈 Material 風格
+* 🕒 依賴容量小的 [dayjs](https://github.com/iamkun/dayjs)
+* 🍀 在 Vue.js 2 下使用
 
 
 ### [Simple Live Demo](https://nono1526.github.io/vue-material-year-calendar)
 
-## Basic usage  
+## 基本用法  
 
-![Basic_demo](https://media.giphy.com/media/LXQxkdBrhmVzOEMbQf/giphy.gif)  
-## Draggable
+![Basic_demo](https://media.giphy.com/media/LXQxkdBrhmVzOEMbQf/giphy.gif) 
+
+## 支援滑鼠拖拉
 ![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)  
 
 ---
-## Getting Started
+## 快速開始
 
-### 📚 Installation
+### 📚 安裝
 
 ```console
 npm install vue-material-year-calendar --save
 ```
 
-### 📚 Example
+### 📚 範例
 ```vue
 <template>
   <YearCalendar
@@ -67,14 +68,14 @@ export default {
    * Type: `String` | `Number`
    * Required: `true`
 
-The year to be display.
+要顯示的年份。
 
 ### activeDates.sync
    * Type: `Array`
    * Required: `true`
    * Default: `[]`
 
-Your selected dates.
+使用者選擇的日期。
 
 ex: 
 ```javascript
@@ -86,16 +87,16 @@ ex:
    * Type: `String`
    * Default: `en`
 
-Choose language to displayed.
+選擇語系。預設為英文。
 
-`en`: English, `tw`: 繁體中文
+`en`: English, `tw`: 繁體中文。 Taiwan NO.1
 
 
-## 📚 event
+## 📚 事件
 ### @toggleDate
    * Type: `function`
 
-Function will be called when you select/unselect a date.
+點選/取消日期時，會觸發這個函數。
 
 ex: 
 
