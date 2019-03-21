@@ -16,9 +16,7 @@
             'calendar__day--otherMonth': dayObj.isOtherMonth,
             'calendar--active': dayObj.active
           }"
-        >
-          {{ dayObj.value }}
-        </div>
+        >{{ dayObj.value }}</div>
       </div>
     </div>
   </div>
