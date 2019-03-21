@@ -1,5 +1,6 @@
 English | [繁體中文](./doc/tw.md)
-# Vue Material Year Calendar
+![](https://i.imgur.com/7rinsub.png)
+<!-- ![](https://i.imgur.com/0JRDuTV.png) -->
 <p align="center">
 <a href="https://www.npmjs.com/package/vue-material-year-calendar"><img src="https://img.shields.io/npm/v/vue-material-year-calendar.svg"  alt="Versions"></a> <a  href="https://www.npmjs.com/package/vue-material-year-calendar"><img  src="https://img.shields.io/npm/dm/vue-material-year-calendar.svg"  alt="Downloads"></a> <a  href="https://www.npmjs.com/package/vue-material-year-calendar"><img src="https://img.shields.io/npm/l/vue-material-year-calendar.svg"  alt="License"></a>
 </p>  
@@ -37,6 +38,7 @@ npm install vue-material-year-calendar --save
     :activeDates.sync ="activeDates"
     @toggleDate="toggleDate"
     lang="tw"
+    :showYearSelector="showYearSelector"
   ></YearCalendar>
 </template>
 
@@ -48,7 +50,8 @@ export default {
   data () {
     return {
       year: 2019,
-      activeDates: ['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01']
+      activeDates: ['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01'],
+      showYearSelector: true
     }
   },
   methods: {
@@ -88,8 +91,18 @@ ex:
 
 Choose language to displayed.
 
-`en`: English, `tw`: 繁體中文
+`en`: English, `tw`: 繁體中文, `pt`: Português
 
+### showYearSelector 
+   * Type: `Boolean`
+   * Default: `true`
+
+Show or hide the years selector on top of the calendar.
+
+ex: 
+```javascript
+:showYearSelector="false"
+```
 
 ## 📚 event
 ### @toggleDate

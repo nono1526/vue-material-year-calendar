@@ -1,6 +1,6 @@
 <template>
   <div class="vue-calendar__container">
-    <div class="container__year">
+    <div v-if="showYearSelector" class="container__year">
       <!-- <span><button @click="addYear(-1)">back</button></span> -->
       <span
         v-for="i in 5"
@@ -35,6 +35,10 @@ import MonthCalendar from './MonthCalendar'
 export default {
   name: 'year-calendar',
   props: {
+    showYearSelector: {
+      type: Boolean,
+      default: () => true
+    },
     activeDates: {
       type: Array,
       default: () => [],
@@ -61,11 +65,10 @@ export default {
           var month = parseInt(parts[1], 10)
           var year = parseInt(parts[0], 10)
 
-          if (year < 1000 || year > 3000 || month === 0 || month > 12) { return false }
-          var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
-          if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) { monthLength[1] = 29 }
-          if (day > 0 && day <= monthLength[month - 1]) isGood = true
-          else isGood = false
+          if (year < 1000 || year > 3000 || month === 0 || month > 12) isGood = false
+          let monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
+          if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) monthLength[1] = 29
+          if (!(day > 0 && day <= monthLength[month - 1])) isGood = false
         })
         return isGood
       }
