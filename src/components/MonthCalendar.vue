@@ -43,6 +43,10 @@ export default {
     defaultClassName: {
       type: String,
       default: () => ''
+    },
+    activeClass: {
+      type: String,
+      default: () => 'calendar--active'
     }
   },
   data () {
@@ -147,7 +151,7 @@ export default {
     classList (dayObj) {
       let oClassList = {
         'calendar__day--otherMonth': dayObj.isOtherMonth,
-        'calendar--active': dayObj.active
+        [this.activeClass]: dayObj.active
       }
 
       if (dayObj.active) oClassList[dayObj.className] = true
@@ -226,6 +230,7 @@ export default {
     justify-content center
     align-items center
     position relative
+    border-radius 5px
     &:after
       content ''
       display block
@@ -246,7 +251,6 @@ export default {
     &.calendar--active
       background-color: rgba(#FFBABA, .5)
       color #BCBCBC
-      border-radius 5px
   & .calendar__day--otherMonth
     color: #eaeaea
     cursor: auto

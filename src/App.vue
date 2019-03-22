@@ -27,6 +27,7 @@
       :defaultClassName="defaultClassName"
       :showYearSelector="showYearSelector"
       :colorful="colorful"
+      activeClass="custom-day-active-class"
     ></year-calendar>
   </div>
 </template>
@@ -91,11 +92,13 @@ export default {
   padding 60px
   background-color #eaeaea
 
-.day.calendar--active
+.custom-day-active-class
+  background-color: #0aa
+  color: white !important
   &.blue
-    background-color: #00a !important
+    background-color: #0000aa
     color: white !important
   &.red
-    background-color: #a00 !important
+    background-color: #a00
     color: white !important
 </style>
