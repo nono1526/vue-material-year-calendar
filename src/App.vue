@@ -26,6 +26,7 @@
       :lang="lang"
       :defaultClassName="defaultClassName"
       :showYearSelector="showYearSelector"
+      :colorful="colorful"
     ></year-calendar>
   </div>
 </template>
@@ -41,6 +42,7 @@ export default {
   },
   data () {
     return {
+      colorful: true,
       lang: 'en', // 'en', 'tw', 'pt'
       year: 2019,
       activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],

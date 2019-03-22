@@ -35,6 +35,10 @@ import MonthCalendar from './MonthCalendar'
 export default {
   name: 'year-calendar',
   props: {
+    colorful: {
+      type: Boolean,
+      default: () => false
+    },
     showYearSelector: {
       type: Boolean,
       default: () => true
@@ -137,33 +141,31 @@ export default {
         className: dateObj.className
       })
 
-      let newDates = [...this.activeDates]
+      let dateIndex
+      let newDates
 
-      if (this.activeDates.length && typeof this.activeDates[0] === 'string') {
-        let dateIndex = newDates.indexOf(activeDate)
-        if (dateIndex === -1) {
-          newDates.push(activeDate)
-        } else {
-          newDates.splice(dateIndex, 1)
-        }
+      if (!this.colorful) {
+        dateIndex = this.activeDates.indexOf(activeDate)
+        newDates = this.modifiedActiveDates(dateIndex, activeDate)
       } else {
         let oDate = {
           date: activeDate,
           className: this.defaultClassName
         }
 
-        let dateIndex = newDates.indexOf(newDates.find((i) => {
-          return i.date === activeDate
-        }))
-
-        if (dateIndex === -1) {
-          newDates.push(oDate)
-        } else {
-          newDates.splice(dateIndex, 1)
-        }
+        dateIndex = this.activeDates.indexOf(this.activeDates.find((i) => i.date === activeDate))
+        newDates = this.modifiedActiveDates(dateIndex, oDate)
       }
-
       this.$emit('update:activeDates', newDates)
+    },
+    modifiedActiveDates (dateIndex, activeDate) {
+      let newDates = [...this.activeDates]
+      if (dateIndex === -1) {
+        newDates.push(activeDate)
+      } else {
+        newDates.splice(dateIndex, 1)
+      }
+      return newDates
     }
   }
 }
