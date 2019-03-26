@@ -26,6 +26,8 @@
       :lang="lang"
       :defaultClassName="defaultClassName"
       :showYearSelector="showYearSelector"
+      :colorful="colorful"
+      activeClass="custom-day-active-class"
     ></year-calendar>
   </div>
 </template>
@@ -41,9 +43,14 @@ export default {
   },
   data () {
     return {
+      colorful: true,
       lang: 'en', // 'en', 'tw', 'pt'
       year: 2019,
       activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
+<<<<<<< HEAD
+=======
+      // activeDates: ['2019-03-12', '2019-03-16'],
+>>>>>>> 01bfa148828e708875a645c10f1b7d238aec3204
       defaultClassName: '',
       showYearSelector: true
     }
@@ -88,11 +95,13 @@ export default {
   padding 60px
   background-color #eaeaea
 
-.day.calendar--active
+.custom-day-active-class
+  background-color: #0aa
+  color: white !important
   &.blue
-    background-color: #00a !important
+    background-color: #0000aa
     color: white !important
   &.red
-    background-color: #a00 !important
+    background-color: #a00
     color: white !important
 </style>
