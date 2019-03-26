@@ -26,8 +26,8 @@
       :lang="lang"
       :defaultClassName="defaultClassName"
       :showYearSelector="showYearSelector"
-      :colorful="colorful"
-      activeClass="custom-day-active-class"
+      colorful
+      dayActiveClass="custom-day-active-class"
     ></year-calendar>
   </div>
 </template>
@@ -43,14 +43,10 @@ export default {
   },
   data () {
     return {
-      colorful: true,
       lang: 'en', // 'en', 'tw', 'pt'
       year: 2019,
       activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
-<<<<<<< HEAD
-=======
       // activeDates: ['2019-03-12', '2019-03-16'],
->>>>>>> 01bfa148828e708875a645c10f1b7d238aec3204
       defaultClassName: '',
       showYearSelector: true
     }
@@ -65,6 +61,7 @@ export default {
       while (theDate.diff(theDate.endOf('year'), 'day') !== 0) {
         if (theDate.day() === 6 || theDate.day() === 0) {
           // 將週六或週日加入 activeDates 中
+          // add weekend to activeDates
           this.activeDates.push(theDate.format('YYYY-MM-DD'))
         }
         theDate = theDate.add(1, 'day')
@@ -94,14 +91,16 @@ export default {
 #app
   padding 60px
   background-color #eaeaea
-
 .custom-day-active-class
   background-color: #0aa
-  color: white !important
+  color: white
   &.blue
     background-color: #0000aa
-    color: white !important
+    color: white
+    &:after
+      background-image url('./assets/baseline-remove_circle-24px.svg')
+      background-size 100% 100%
   &.red
     background-color: #a00
-    color: white !important
+    color: white
 </style>

@@ -23,7 +23,7 @@
         :defaultClassName="defaultClassName"
         @toggleDate="toggleDate"
         :lang="lang"
-        :activeClass="activeClass"
+        :dayActiveClass="dayActiveClass"
       >
       </month-calendar>
     </div>
@@ -91,7 +91,7 @@ export default {
       type: String,
       default: () => ''
     },
-    activeClass: {
+    dayActiveClass: {
       type: String,
       default: () => ''
     }
