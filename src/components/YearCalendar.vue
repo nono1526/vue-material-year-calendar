@@ -175,7 +175,8 @@ export default {
     }
   },
   created () {
-    this.isUsingString = typeof this.activeDates[0] === 'string'
+    this.isUsingString = this.activeDates.length && typeof this.activeDates[0] === 'string'
+    console.log(this.isUsingString)
   }
 }
 </script>
