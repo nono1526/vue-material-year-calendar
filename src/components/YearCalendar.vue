@@ -36,10 +36,6 @@ import MonthCalendar from './MonthCalendar'
 export default {
   name: 'year-calendar',
   props: {
-    colorful: {
-      type: Boolean,
-      default: () => false
-    },
     showYearSelector: {
       type: Boolean,
       default: () => true
@@ -96,6 +92,11 @@ export default {
       default: () => ''
     }
   },
+  data () {
+    return {
+      isUsingString: true
+    }
+  },
   components: {
     MonthCalendar
   },
@@ -149,7 +150,7 @@ export default {
       let dateIndex
       let newDates
 
-      if (!this.colorful) {
+      if (this.isUsingString) {
         dateIndex = this.activeDates.indexOf(activeDate)
         newDates = this.modifiedActiveDates(dateIndex, activeDate)
       } else {
@@ -172,6 +173,9 @@ export default {
       }
       return newDates
     }
+  },
+  created () {
+    this.isUsingString = typeof this.activeDates[0] === 'string'
   }
 }
 </script>
