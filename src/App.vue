@@ -45,8 +45,8 @@ export default {
     return {
       lang: 'en', // 'en', 'tw', 'pt'
       year: 2019,
-      // activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
-      activeDates: ['2019-03-12', '2019-03-16'],
+      activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
+      // activeDates: ['2019-03-12', '2019-03-16'],
       defaultClassName: '',
       showYearSelector: true
     }
@@ -83,6 +83,7 @@ export default {
   }
 }
 </script>
+
 <style lang="stylus">
 *
   margin 0
