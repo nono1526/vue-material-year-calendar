@@ -10,8 +10,10 @@
 
     <select v-model="defaultClassName">
       <option selected value="">(none)</option>
-      <option value="red">red</option>
-      <option value="blue">blue</option>
+      <option value="info">info</option>
+      <option value="warning">warning</option>
+      <option value="red">red (custom)</option>
+      <option value="blue">blue (custom)</option>
     </select>
 
     <label for="">
@@ -26,7 +28,6 @@
       :lang="lang"
       :defaultClassName="defaultClassName"
       :showYearSelector="showYearSelector"
-      dayActiveClass="custom-day-active-class"
     ></year-calendar>
   </div>
 </template>

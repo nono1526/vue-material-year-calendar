@@ -251,8 +251,21 @@ export default {
       background-color rgba(#666, 0.1)
       border-radius 5px
     &.calendar--active
-      background-color: rgba(#FFBABA, .5)
+      background-color rgba(#FFBABA, .5)
       color #BCBCBC
+      &.info
+        background-color rgba(#17a2b8, .8)
+        color #fff
+        &:after
+          background-image url('../assets/RecordIt.svg')
+          background-size 100% 100%
+      &.warning
+        background-color rgba(#ffc107, .7)
+        color #fff
+        &:after
+          background-image url('../assets/round-warning-24px.svg')
+          background-color rgba(#eaeaea, .3)
+          background-size 100% 100%
   & .calendar__day--otherMonth
     color: #eaeaea
     cursor: auto

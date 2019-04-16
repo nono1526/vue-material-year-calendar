@@ -89,7 +89,7 @@ export default {
     },
     dayActiveClass: {
       type: String,
-      default: () => ''
+      default: () => 'calendar--active'
     }
   },
   data () {
