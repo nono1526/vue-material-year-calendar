@@ -20,7 +20,8 @@ English | [繁體中文](./doc/tw.md)
 ![Basic_demo](https://media.giphy.com/media/LXQxkdBrhmVzOEMbQf/giphy.gif)  
 ## Draggable
 ![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)  
-
+## Classification
+![demo](https://i.imgur.com/yoDfOUZ.png)
 ---
 ## Getting Started
 
@@ -103,6 +104,46 @@ ex:
 ```javascript
 :showYearSelector="false"
 ```
+
+### dayActiveClass
+  * Type: `String`
+  * Default: 'calendar--active'
+Change day active class for customize `defaultActiveClass` props.
+ex:
+```vue
+<template>
+<year-calendar
+  ...
+  dayActiveClass="custom-day-active-class"
+  defaultActiveClass="defaultActiveClass" // blue or red
+></year-calendar>
+</template>
+
+<style lang="stylus">
+// now you can customize your `defaultActiveClass` props.
+
+.custom-day-active-class
+  background-color: #0aa // defaultActiveClass = ''
+  color: white
+  &.blue
+    background-color: #0000aa // defaultActiveClass = 'blue'
+    color: white
+  &.red
+    background-color: #a00 // defaultActiveClass = 'red'
+    color: white
+    &:after
+      background-image url('./assets/baseline-remove_circle-24px.svg')
+      background-size 100% 100%
+</style>
+```
+
+### defaultActiveClass
+  * Type: `String` (default class: info or warning )
+  * Default: ''
+Classification for active days.
+
+
+### 
 
 ## 📚 event
 ### @toggleDate
