@@ -145,7 +145,7 @@ ex:
   * Type: `String` (default class: info or warning )
   * Default: ''
 
-Classification for active days. You can use `dayActiveClass` prop to customize your `defaultActiveClass`!  
+Classification for active days. You can use `dayActiveClass` prop to customize your `defaultActiveClass`!
 
 ## 📚 event
 ### @toggleDate
