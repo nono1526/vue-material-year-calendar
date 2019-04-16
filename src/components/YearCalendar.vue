@@ -20,6 +20,7 @@
         :year="activeYear"
         :month="n"
         :activeDates="month[n]"
+        :defaultClassName="defaultClassName"
         @toggleDate="toggleDate"
         :lang="lang"
       >
@@ -43,18 +44,26 @@ export default {
       default: () => [],
       validator: (dateArray) => {
         let isGood = true
+        let curDate = null
+
         dateArray.forEach(date => {
+          if (typeof date === 'string') {
+            curDate = date
+          } else if (typeof date === 'object' && date.hasOwnProperty('date')) {
+            curDate = date.date
+          }
+
           // 以下程式碼參考「How to validate date with format mm/dd/yyyy in JavaScript?」in Stackoverflow
           // 由於 「^\d{4}\-\d{1,2}\-\d{1,2}$」會被ESLint 判為錯誤，所以暫時關閉 EsLint 對下一行的驗證 by丁丁
           // eslint-disable-next-line no-useless-escape
-          if (!/^\d{4}\-\d{1,2}\-\d{1,2}$/.test(date)) {
+          if (!/^\d{4}\-\d{1,2}\-\d{1,2}$/.test(curDate)) {
             isGood = false
           }
           // Parse the date parts to integers
-          let parts = date.split('-')
-          let day = parseInt(parts[2], 10)
-          let month = parseInt(parts[1], 10)
-          let year = parseInt(parts[0], 10)
+          var parts = curDate.split('-')
+          var day = parseInt(parts[2], 10)
+          var month = parseInt(parts[1], 10)
+          var year = parseInt(parts[0], 10)
 
           if (year < 1000 || year > 3000 || month === 0 || month > 12) isGood = false
           let monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
@@ -72,6 +81,10 @@ export default {
     lang: {
       type: String,
       default: 'en'
+    },
+    defaultClassName: {
+      type: String,
+      default: () => ''
     }
   },
   components: {
@@ -81,10 +94,21 @@ export default {
     month () {
       const month = {}
       this.activeDates.forEach(date => {
-        if (dayjs(date).year() !== this.value) return // 讓2020年1月的資料，不會放到 2019年的1月資料裡
-        let m = (dayjs(date).month() + 1).toString()
+        let oDate
+
+        if (typeof date === 'string') {
+          oDate = {
+            date: date,
+            className: this.defaultClassName
+          }
+        } else {
+          oDate = date
+        }
+
+        if (dayjs(oDate.date).year() !== this.value) return // 讓2020年1月的資料，不會放到 2019年的1月資料裡
+        let m = (dayjs(oDate.date).month() + 1).toString()
         if (!month[m]) month[m] = []
-        month[m].push(date)
+        month[m].push(oDate)
       })
       return month
     },
@@ -109,14 +133,34 @@ export default {
         .format('YYYY-MM-DD')
       this.$emit('toggleDate', {
         date: activeDate,
-        selected: dateObj.selected
+        selected: dateObj.selected,
+        className: dateObj.className
       })
+
       let newDates = [...this.activeDates]
-      let dateIndex = newDates.indexOf(activeDate)
-      if (dateIndex === -1) {
-        newDates.push(activeDate)
+
+      if (this.activeDates.length && typeof this.activeDates[0] === 'string') {
+        let dateIndex = newDates.indexOf(activeDate)
+        if (dateIndex === -1) {
+          newDates.push(activeDate)
+        } else {
+          newDates.splice(dateIndex, 1)
+        }
       } else {
-        newDates.splice(dateIndex, 1)
+        let oDate = {
+          date: activeDate,
+          className: this.defaultClassName
+        }
+
+        let dateIndex = newDates.indexOf(newDates.find((i) => {
+          return i.date === activeDate
+        }))
+
+        if (dateIndex === -1) {
+          newDates.push(oDate)
+        } else {
+          newDates.splice(dateIndex, 1)
+        }
       }
 
       this.$emit('update:activeDates', newDates)

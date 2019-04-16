@@ -7,15 +7,24 @@
       <option value="en">English</option>
       <option value="pt">Português</option>
     </select>
+
+    <select v-model="defaultClassName">
+      <option selected value="">(none)</option>
+      <option value="red">red</option>
+      <option value="blue">blue</option>
+    </select>
+
     <label for="">
       Show years selector?
       <input type="checkbox" v-model="showYearSelector" >
     </label>
+
     <year-calendar
       v-model="year"
       :activeDates.sync="activeDates"
       @toggleDate="toggleDate"
       :lang="lang"
+      :defaultClassName="defaultClassName"
       :showYearSelector="showYearSelector"
     ></year-calendar>
   </div>
@@ -34,7 +43,9 @@ export default {
     return {
       lang: 'en', // 'en', 'tw', 'pt'
       year: 2019,
-      activeDates: ['2019-03-13', '2019-12-31'],
+      activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
+      // activeDates: ['2019-03-12', '2019-03-16'],
+      defaultClassName: ''
       showYearSelector: true
     }
   },
@@ -77,4 +88,12 @@ export default {
 #app
   padding 60px
   background-color #eaeaea
+
+.day.calendar--active
+  &.blue
+    background-color: #00a !important
+    color: white !important
+  &.red
+    background-color: #a00 !important
+    color: white !important
 </style>
