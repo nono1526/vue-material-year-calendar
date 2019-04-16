@@ -74,13 +74,13 @@ export default {
 The year to be display.
 
 ### activeDates.sync
-   * Type: `Array`
-   * Required: `true`
-   * Default: `[]`
+   * Type: `Array`  
+   * Required: `true`  
+   * Default: `[]`  
 
-Your selected dates.
+Your selected dates.  
 
-ex: 
+ex:  
 ```javascript
 :activeDates.sync="['2019-01-01', '2019-01-02', '2020-01-01']"
 ```
@@ -106,10 +106,13 @@ ex:
 ```
 
 ### dayActiveClass
-  * Type: `String`
-  * Default: 'calendar--active'
-Change day active class for customize `defaultActiveClass` props.
-ex:
+  * Type: `String`  
+  * Default: 'calendar--active'  
+
+Change day active class for customize `defaultActiveClass` props.  
+
+ex:  
+
 ```vue
 <template>
 <year-calendar
@@ -138,20 +141,19 @@ ex:
 ```
 
 ### defaultActiveClass
+
   * Type: `String` (default class: info or warning )
   * Default: ''
-Classification for active days.
 
-
-### 
+Classification for active days. You can use `dayActiveClass` prop to customize your `defaultActiveClass`!  
 
 ## 📚 event
 ### @toggleDate
    * Type: `function`
 
-Function will be called when you select/unselect a date.
+Function will be called when you select/unselect a date.  
 
-ex: 
+ex:  
 
 ```vue
 <template>
