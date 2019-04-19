@@ -20,7 +20,9 @@
 
 ## 支援滑鼠拖拉
 ![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)  
-
+## 分類
+![Classification](https://i.imgur.com/3KB3RK7.png)---
+## Getting Started
 ---
 ## 快速開始
 
@@ -83,6 +85,16 @@ ex:
 ```javascript
 :activeDates.sync="['2019-01-01', '2019-01-02', '2020-01-01']"
 ```
+  * 1.2.0 版後更新，可使用物件陣列 `[{date: '2019-01-01', className: 'info'}]`
+
+可以使用物件中的 `className` 來新增不同分類狀態。
+
+若不使用分類，也可以直接儲存字串陣列。
+
+ex:
+```javascript
+:activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }]
+```
 
 
 ### lang
@@ -103,6 +115,48 @@ ex:
 ```javascript
 :showYearSelector="false"
 ```
+
+### dayActiveClass
+  * Type: `String`  
+  * Default: 'calendar--active'  
+
+用來自訂分類，變更日期被選擇時，所設定的 class，需配合 `defaultActiveClass`
+
+ex:  
+
+```vue
+<template>
+<year-calendar
+  ...
+  dayActiveClass="custom-day-active-class"
+  defaultActiveClass="defaultActiveClass" // blue or red
+></year-calendar>
+</template>
+
+<style lang="stylus">
+// now you can customize your `defaultActiveClass` props.
+
+.custom-day-active-class
+  background-color: #0aa // defaultActiveClass = ''
+  color: white
+  &.blue
+    background-color: #0000aa // defaultActiveClass = 'blue'
+    color: white
+  &.red
+    background-color: #a00 // defaultActiveClass = 'red'
+    color: white
+    &:after
+      background-image url('./assets/baseline-remove_circle-24px.svg')
+      background-size 100% 100%
+</style>
+```
+
+### defaultActiveClass
+
+  * Type: `String` (default class: info or warning )
+  * Default: ''
+
+用來設定目前要標記的分類，可以配合 `dayActionClass` 來自訂分類。
 
 ## 📚 事件
 ### @toggleDate
