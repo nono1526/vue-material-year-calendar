@@ -21,8 +21,7 @@ English | [繁體中文](./doc/tw.md)
 ## Draggable
 ![demo](https://media.giphy.com/media/BZkjvL89E4dDvUikAl/giphy.gif)  
 ## Classification
-![demo](https://i.imgur.com/yoDfOUZ.png)
----
+![Classification](https://i.imgur.com/3KB3RK7.png)---
 ## Getting Started
 
 ### 📚 Installation
@@ -77,13 +76,23 @@ The year to be display.
    * Type: `Array`  
    * Required: `true`  
    * Default: `[]`  
-
-Your selected dates.  
-
 ex:  
 ```javascript
 :activeDates.sync="['2019-01-01', '2019-01-02', '2020-01-01']"
 ```
+Your selected dates. 
+  * After 1.2.0 version
+  
+You can use array of objects or just uses `String`.
+
+Then you can set `className` for classification feature.x
+
+ex:
+```javascript
+:activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
+```
+
+
 
 
 ### lang
