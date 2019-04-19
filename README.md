@@ -76,11 +76,14 @@ The year to be display.
    * Type: `Array`  
    * Required: `true`  
    * Default: `[]`  
+   * 
+Your selected dates. 
+
 ex:  
 ```javascript
 :activeDates.sync="['2019-01-01', '2019-01-02', '2020-01-01']"
 ```
-Your selected dates. 
+
   * After 1.2.0 version
   
 You can use array of objects or just uses `String`.

@@ -120,7 +120,7 @@ ex:
   * Type: `String`  
   * Default: 'calendar--active'  
 
-用來自訂分類，變更日期被選擇時，所設定的 class，需配合 `defaultActiveClass`
+用來自訂分類，變更當日期被選擇時，所日曆所加上的 `active class` (預設是 `calendar--active`)，需配合 `defaultActiveClass`
 
 ex:  
 
@@ -156,7 +156,7 @@ ex:
   * Type: `String` (default class: info or warning )
   * Default: ''
 
-用來設定目前要標記的分類，可以配合 `dayActionClass` 來自訂分類。
+用來設定目前要標記的分類，可以配合 `dayActionClass` 來自訂分類。
 
 ## 📚 事件
 ### @toggleDate
