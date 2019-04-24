@@ -40,11 +40,11 @@ export default {
       type: String,
       default: 'en'
     },
-    defaultClassName: {
+    activeClass: {
       type: String,
       default: () => ''
     },
-    dayActiveClass: {
+    prefixClass: {
       type: String,
       default: () => 'calendar--active'
     }
@@ -106,7 +106,7 @@ export default {
         if (typeof date === 'string') {
           oDate = {
             date: date,
-            className: this.defaultClassName
+            className: this.activeClass
           }
         } else if (typeof date === 'object') {
           oDate = date
@@ -135,7 +135,7 @@ export default {
         month: this.month,
         date: dayObj.value,
         selected: !dayObj.active,
-        className: this.defaultClassName
+        className: this.activeClass
       })
     },
     dragDay (dayObj) {
@@ -151,7 +151,7 @@ export default {
     classList (dayObj) {
       let oClassList = {
         'calendar__day--otherMonth': dayObj.isOtherMonth,
-        [this.dayActiveClass]: dayObj.active
+        [this.prefixClass]: dayObj.active
       }
 
       if (dayObj.active) oClassList[dayObj.className] = true

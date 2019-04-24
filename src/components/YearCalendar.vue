@@ -20,10 +20,10 @@
         :year="activeYear"
         :month="n"
         :activeDates="month[n]"
-        :defaultClassName="activeClass"
+        :activeClass="activeClass"
         @toggleDate="toggleDate"
         :lang="lang"
-        :dayActiveClass="prefixClass"
+        :prefixClass="prefixClass"
       >
       </month-calendar>
     </div>
