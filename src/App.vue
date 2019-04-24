@@ -10,10 +10,9 @@
 
     <select v-model="defaultClassName">
       <option selected value="">(none)</option>
-      <option value="info">info</option>
-      <option value="warning">warning</option>
-      <option value="red">red (custom)</option>
-      <option value="blue">blue (custom)</option>
+      <option value="red">red</option>
+      <option value="blue">blue</option>
+      <option value="your_customized_classname">your_customized_classname</option>
     </select>
 
     <label for="">
@@ -26,7 +25,8 @@
       :activeDates.sync="activeDates"
       @toggleDate="toggleDate"
       :lang="lang"
-      :defaultClassName="defaultClassName"
+      prefixClass="vmyc"
+      :activeClass="defaultClassName"
       :showYearSelector="showYearSelector"
     ></year-calendar>
   </div>
@@ -45,8 +45,12 @@ export default {
     return {
       lang: 'en', // 'en', 'tw', 'pt'
       year: 2019,
-      activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
-      // activeDates: ['2019-03-12', '2019-03-16'],
+      activeDates: [
+        { date: '2019-02-13' },
+        { date: '2019-02-14', className: 'red' },
+        { date: '2019-02-15', className: 'blue' },
+        { date: '2019-02-16', className: 'your_customized_classname' }
+      ],
       defaultClassName: '',
       showYearSelector: true
     }
@@ -92,16 +96,20 @@ export default {
 #app
   padding 60px
   background-color #eaeaea
-.custom-day-active-class
+.vmyc
   background-color: #0aa
   color: white
-  &.blue
-    background-color: #0000aa
-    color: white
   &.red
     background-color: #a00
     color: white
     &:after
       background-image url('./assets/baseline-remove_circle-24px.svg')
       background-size 100% 100%
+  &.blue
+    background-color: #0000aa
+    color: white
+  &.your_customized_classname
+    background-color: yellow
+    color: black
+
 </style>

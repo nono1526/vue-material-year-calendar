@@ -135,7 +135,7 @@ export default {
         month: this.month,
         date: dayObj.value,
         selected: !dayObj.active,
-        className: dayObj.className || this.defaultClassName
+        className: this.defaultClassName
       })
     },
     dragDay (dayObj) {

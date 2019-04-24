@@ -20,10 +20,10 @@
         :year="activeYear"
         :month="n"
         :activeDates="month[n]"
-        :defaultClassName="defaultClassName"
+        :defaultClassName="activeClass"
         @toggleDate="toggleDate"
         :lang="lang"
-        :dayActiveClass="dayActiveClass"
+        :dayActiveClass="prefixClass"
       >
       </month-calendar>
     </div>
@@ -83,11 +83,11 @@ export default {
       type: String,
       default: 'en'
     },
-    defaultClassName: {
+    activeClass: {
       type: String,
       default: () => ''
     },
-    dayActiveClass: {
+    prefixClass: {
       type: String,
       default: () => 'calendar--active'
     }
@@ -109,10 +109,14 @@ export default {
         if (typeof date === 'string') {
           oDate = {
             date: date,
-            className: this.defaultClassName
+            className: this.activeClass
           }
         } else {
-          oDate = date
+          // 若 activeDate 裡的物件少了 className 屬性，就自動填入空字串。否則會變成undefined
+          oDate = {
+            date: date.date,
+            className: date.className || ''
+          }
         }
 
         if (dayjs(oDate.date).year() !== this.value) return // 讓2020年1月的資料，不會放到 2019年的1月資料裡
@@ -156,7 +160,7 @@ export default {
       } else {
         let oDate = {
           date: activeDate,
-          className: this.defaultClassName
+          className: dateObj.className // 原為 this.defaultClassName ，修正bug(丁丁)
         }
 
         dateIndex = this.activeDates.indexOf(this.activeDates.find((i) => i.date === activeDate))
