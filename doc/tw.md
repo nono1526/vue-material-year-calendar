@@ -37,10 +37,10 @@ npm install vue-material-year-calendar --save
 <template>
   <YearCalendar
     v-model="year"
-    :activeDates.sync ="activeDates"
+    :activeDates.sync="activeDates"
     @toggleDate="toggleDate"
-    lang="tw"
-    :showYearSelector="showYearSelector"
+    prefixClass="your_customized_wrapper_class"
+    :activeClass="activeClass"
   ></YearCalendar>
 </template>
 
@@ -52,8 +52,13 @@ export default {
   data () {
     return {
       year: 2019,
-      activeDates: ['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01'],
-      showYearSelector: true
+      activeDates: [
+        { date: '2019-02-13' },
+        { date: '2019-02-14', className: 'red' },
+        { date: '2019-02-15', className: 'blue' },
+        { date: '2019-02-16', className: 'your_customized_classname' }
+      ],
+      activeClass: '',
     }
   },
   methods: {
@@ -63,6 +68,25 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+.your_customized_wrapper_class
+  background-color: #0aa
+  color: white
+  &.red
+    background-color: red
+    color: white
+    &:after
+      background-image url('./assets/baseline-remove_circle-24px.svg')
+      background-size 100% 100%
+  &.blue
+    background-color: #0000aa
+    color: white
+  &.your_customized_classname
+    background-color: yellow
+    color: black
+
+</style>
 
 ```
 
@@ -75,26 +99,73 @@ export default {
 要顯示的年份。
 
 ### activeDates.sync
-   * Type: `Array`
+   * Type: `Array of objects`  
    * Required: `true`
    * Default: `[]`
 
 使用者選擇的日期。
 
-ex: 
-```javascript
-:activeDates.sync="['2019-01-01', '2019-01-02', '2020-01-01']"
-```
-  * 1.2.0 版後更新，可使用物件陣列 `[{date: '2019-01-01', className: 'info'}]`
-
-可以使用物件中的 `className` 來新增不同分類狀態。
-
-若不使用分類，也可以直接儲存字串陣列。
+若有設定 `className` 的屬性，則可以在CSS裡控制該日期的樣式。
 
 ex:
 ```javascript
-:activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }]
+  [
+    { date: '2019-02-13' },
+    { date: '2019-02-14', className: 'red' },
+    { date: '2019-02-15', className: 'blue' },
+    { date: '2019-02-16', className: 'your_customized_classname' }
+  ],
 ```
+
+### prefixClass
+  * Type: `String`  
+  * Default: `calendar--active`  
+  * Required: `true`
+
+包在外層的CSS calss。 
+
+例如你設定 `prefixClass` 為`your_customized_wrapper_class`，則你可以在CSS裡面，透過`your_customized_wrapper_class`來做外層的CSS包覆。
+
+ex:  
+
+```vue
+<template>
+<year-calendar
+  ...
+  prefixClass="your_customized_wrapper_class"
+></year-calendar>
+</template>
+
+<style lang="stylus">
+
+.your_customized_wrapper_class
+  background-color: #0aa
+  color: white
+  &.red
+    background-color: #a00
+    color: white
+    &:after
+      background-image url('./assets/baseline-remove_circle-24px.svg')
+      background-size 100% 100%
+  &.blue
+    background-color: #0000aa
+    color: white
+  &.your_customized_classname
+    background-color: yellow
+    color: black
+
+</style>
+```
+
+
+### activeClass
+
+  * Type: `String` (default class: info or warning )
+  * Default: `''`(empty string)
+
+點擊日期時，會切換的 class name. 例如當你指定 `activeClass` 為 `my_red`後，點擊某個日期，該日期就會新增/移除對應的 class name.
+
+![](https://i.imgur.com/Lmp3RG1.png)
 
 
 ### lang
@@ -116,47 +187,6 @@ ex:
 :showYearSelector="false"
 ```
 
-### dayActiveClass
-  * Type: `String`  
-  * Default: 'calendar--active'  
-
-用來自訂分類，變更當日期被選擇時，所日曆所加上的 `active class` (預設是 `calendar--active`)，需配合 `defaultActiveClass`
-
-ex:  
-
-```vue
-<template>
-<year-calendar
-  ...
-  dayActiveClass="custom-day-active-class"
-  defaultActiveClass="defaultActiveClass" // blue or red
-></year-calendar>
-</template>
-
-<style lang="stylus">
-// now you can customize your `defaultActiveClass` props.
-
-.custom-day-active-class
-  background-color: #0aa // defaultActiveClass = ''
-  color: white
-  &.blue
-    background-color: #0000aa // defaultActiveClass = 'blue'
-    color: white
-  &.red
-    background-color: #a00 // defaultActiveClass = 'red'
-    color: white
-    &:after
-      background-image url('./assets/baseline-remove_circle-24px.svg')
-      background-size 100% 100%
-</style>
-```
-
-### defaultActiveClass
-
-  * Type: `String` (default class: info or warning )
-  * Default: ''
-
-用來設定目前要標記的分類，可以配合 `dayActionClass` 來自訂分類。
 
 ## 📚 事件
 ### @toggleDate

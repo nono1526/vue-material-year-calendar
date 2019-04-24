@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <button @click="add_sat_and_sun_of_year">Add Sat and Sun</button>
-    <button @click="remove_sat_and_sun_of_year">Remove Sat and Sun</button>
+    <button @click="add_sat_and_sun_of_year">Add weekend</button>
+    <button @click="remove_sat_and_sun_of_year">Remove weekend</button>
     <select v-model="lang">
       <option value="tw">繁體中文</option>
       <option value="en">English</option>
       <option value="pt">Português</option>
     </select>
 
-    <select v-model="defaultClassName">
+    <select v-model="activeClass">
       <option selected value="">(none)</option>
       <option value="red">red</option>
       <option value="blue">blue</option>
@@ -25,8 +25,8 @@
       :activeDates.sync="activeDates"
       @toggleDate="toggleDate"
       :lang="lang"
-      prefixClass="vmyc"
-      :activeClass="defaultClassName"
+      prefixClass="your_customized_wrapper_class"
+      :activeClass="activeClass"
       :showYearSelector="showYearSelector"
     ></year-calendar>
   </div>
@@ -51,7 +51,7 @@ export default {
         { date: '2019-02-15', className: 'blue' },
         { date: '2019-02-16', className: 'your_customized_classname' }
       ],
-      defaultClassName: '',
+      activeClass: '',
       showYearSelector: true
     }
   },
@@ -96,7 +96,7 @@ export default {
 #app
   padding 60px
   background-color #eaeaea
-.vmyc
+.your_customized_wrapper_class
   background-color: #0aa
   color: white
   &.red

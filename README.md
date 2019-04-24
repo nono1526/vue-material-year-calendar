@@ -35,10 +35,10 @@ npm install vue-material-year-calendar --save
 <template>
   <YearCalendar
     v-model="year"
-    :activeDates.sync ="activeDates"
+    :activeDates.sync="activeDates"
     @toggleDate="toggleDate"
-    lang="tw"
-    :showYearSelector="showYearSelector"
+    prefixClass="your_customized_wrapper_class"
+    :activeClass="activeClass"
   ></YearCalendar>
 </template>
 
@@ -50,8 +50,13 @@ export default {
   data () {
     return {
       year: 2019,
-      activeDates: ['2018-01-01', '2019-01-01', '2019-01-02', '2019-01-03', '2020-01-01'],
-      showYearSelector: true
+      activeDates: [
+        { date: '2019-02-13' },
+        { date: '2019-02-14', className: 'red' },
+        { date: '2019-02-15', className: 'blue' },
+        { date: '2019-02-16', className: 'your_customized_classname' }
+      ],
+      activeClass: '',
     }
   },
   methods: {
@@ -62,6 +67,24 @@ export default {
 }
 </script>
 
+<style lang="stylus">
+.your_customized_wrapper_class
+  background-color: #0aa
+  color: white
+  &.red
+    background-color: red
+    color: white
+    &:after
+      background-image url('./assets/baseline-remove_circle-24px.svg')
+      background-size 100% 100%
+  &.blue
+    background-color: #0000aa
+    color: white
+  &.your_customized_classname
+    background-color: yellow
+    color: black
+
+</style>
 ```
 
 
@@ -73,29 +96,68 @@ export default {
 The year to be display.
 
 ### activeDates.sync
-   * Type: `Array`  
+   * Type: `Array of objects`  
    * Required: `true`  
-   * Default: `[]`  
-   * 
+   * Default: `[]`
 Your selected dates. 
 
-ex:  
-```javascript
-:activeDates.sync="['2019-01-01', '2019-01-02', '2020-01-01']"
-```
-
-  * After 1.2.0 version
-  
-You can use array of objects or just uses `String`.
-
-Then you can set `className` for classification feature.x
+If you set `className` attributes, you can customize it style in CSS.
 
 ex:
 ```javascript
-:activeDates: [{ date: '2019-03-13', className: 'red' }, { date: '2019-03-14', className: 'blue' }],
+  [
+    { date: '2019-02-13' },
+    { date: '2019-02-14', className: 'red' },
+    { date: '2019-02-15', className: 'blue' },
+    { date: '2019-02-16', className: 'your_customized_classname' }
+  ],
 ```
 
+### prefixClass
+  * Type: `String`  
+  * Default: `calendar--active`  
+  * Required: `true`
 
+A wrapper classname for customized css. Set `prefixClass`'s value, then use it value as a class wrapper in CSS.
+
+ex:  
+
+```vue
+<template>
+<year-calendar
+  ...
+  prefixClass="your_customized_wrapper_class"
+></year-calendar>
+</template>
+
+<style lang="stylus">
+
+.your_customized_wrapper_class
+  background-color: #0aa
+  color: white
+  &.red
+    background-color: #a00
+    color: white
+    &:after
+      background-image url('./assets/baseline-remove_circle-24px.svg')
+      background-size 100% 100%
+  &.blue
+    background-color: #0000aa
+    color: white
+  &.your_customized_classname
+    background-color: yellow
+    color: black
+
+</style>
+```
+
+### activeClass
+
+  * Type: `String` (default class: info or warning )
+  * Default: `''`(empty string)
+
+The classname you want to toggle. For example, set `activeClass` to `my_red` first. Then you click a date on calendar, the date will be add/remove with `my_red` class.
+![](https://i.imgur.com/Lmp3RG1.png)
 
 
 ### lang
@@ -105,6 +167,8 @@ ex:
 Choose language to displayed.
 
 `en`: English, `tw`: 繁體中文, `pt`: Português
+
+
 
 ### showYearSelector 
    * Type: `Boolean`
@@ -117,47 +181,7 @@ ex:
 :showYearSelector="false"
 ```
 
-### dayActiveClass
-  * Type: `String`  
-  * Default: 'calendar--active'  
 
-Change day active class for customize `defaultActiveClass` props.  
-
-ex:  
-
-```vue
-<template>
-<year-calendar
-  ...
-  dayActiveClass="custom-day-active-class"
-  defaultActiveClass="defaultActiveClass" // blue or red
-></year-calendar>
-</template>
-
-<style lang="stylus">
-// now you can customize your `defaultActiveClass` props.
-
-.custom-day-active-class
-  background-color: #0aa // defaultActiveClass = ''
-  color: white
-  &.blue
-    background-color: #0000aa // defaultActiveClass = 'blue'
-    color: white
-  &.red
-    background-color: #a00 // defaultActiveClass = 'red'
-    color: white
-    &:after
-      background-image url('./assets/baseline-remove_circle-24px.svg')
-      background-size 100% 100%
-</style>
-```
-
-### defaultActiveClass
-
-  * Type: `String` (default class: info or warning )
-  * Default: ''
-
-Classification for active days. You can use `dayActiveClass` prop to customize your `defaultActiveClass`!
 
 ## 📚 event
 ### @toggleDate
