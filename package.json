@@ -9,11 +9,11 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "dayjs": "^1.7.7",
+    "dayjs": "^1.8.13",
     "gh-pages": "^2.0.1",
-    "vue": "^2.5.17",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "vue": "^2.5.17"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
