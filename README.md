@@ -166,7 +166,7 @@ The classname you want to toggle. For example, set `activeClass` to `my_red` fir
 
 Choose language to displayed.
 
-`en`: English, `tw`: 繁體中文, `pt`: Português
+`en`: English, `tw`: 繁體中文, `pt`: Português, `de`: Deutsch
 
 
 
