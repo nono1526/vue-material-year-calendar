@@ -126,7 +126,8 @@ export default {
       const dayMapping = {
         tw: ['一', '二', '三', '四', '五', '六', '日'],
         en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-        pt: ['2ª', '3ª', '4ª', '5ª', '6ª', 'Sa', 'Do']
+        pt: ['2ª', '3ª', '4ª', '5ª', '6ª', 'Sa', 'Do'],
+        de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
       }
       return dayMapping[this.lang][day]
     },
