@@ -26,6 +26,11 @@
         :prefixClass="prefixClass"
       >
       </month-calendar>
+      <div class="c-wrapper container__month"></div>
+      <div class="c-wrapper container__month"></div>
+      <div class="c-wrapper container__month"></div>
+      <div class="c-wrapper container__month"></div>
+      <div class="c-wrapper container__month"></div>
     </div>
   </div>
 </template>
