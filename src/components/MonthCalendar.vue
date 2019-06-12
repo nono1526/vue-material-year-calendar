@@ -60,7 +60,8 @@ export default {
       const fontSizeMapping = {
         tw: '16px',
         en: '14px',
-        pt: '14px'
+        pt: '14px',
+        de: '14px'
       }
       return fontSizeMapping[this.lang]
     },
