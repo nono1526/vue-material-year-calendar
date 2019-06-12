@@ -68,7 +68,8 @@ export default {
       const monthMapping = {
         tw: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
         en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        pt: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+        pt: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
       }
       return monthMapping[this.lang][this.month - 1]
     }
@@ -125,7 +126,8 @@ export default {
       const dayMapping = {
         tw: ['一', '二', '三', '四', '五', '六', '日'],
         en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-        pt: ['2ª', '3ª', '4ª', '5ª', '6ª', 'Sa', 'Do']
+        pt: ['2ª', '3ª', '4ª', '5ª', '6ª', 'Sa', 'Do'],
+        de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
       }
       return dayMapping[this.lang][day]
     },

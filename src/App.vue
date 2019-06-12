@@ -6,6 +6,7 @@
       <option value="tw">繁體中文</option>
       <option value="en">English</option>
       <option value="pt">Português</option>
+      <option value="de">Deutsch</option>
     </select>
 
     <select v-model="activeClass">
