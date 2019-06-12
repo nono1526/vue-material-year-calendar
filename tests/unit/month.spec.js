@@ -37,7 +37,8 @@ describe('MonthCalendar', () => {
 
   it('renders array of objects correctly', () => {
     wrapper.setProps({
-      activeDates: [{ date: '2019-01-13', className: '' },
+      activeDates: [
+        { date: '2019-01-13', className: '' },
         { date: '2019-01-14', className: 'info' },
         { date: '2019-01-15', className: 'warning' }]
     })
