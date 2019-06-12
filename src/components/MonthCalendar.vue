@@ -47,6 +47,14 @@ export default {
     prefixClass: {
       type: String,
       default: () => 'calendar--active'
+    },
+    hideSaturday: {
+      type: Boolean,
+      default: false
+    },
+    hideSunday: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
