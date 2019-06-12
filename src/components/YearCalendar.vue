@@ -26,6 +26,11 @@
         :prefixClass="prefixClass"
       >
       </month-calendar>
+      <div class="container__month p-0"></div>
+      <div class="container__month p-0"></div>
+      <div class="container__month p-0"></div>
+      <div class="container__month p-0"></div>
+      <div class="container__month p-0"></div>
     </div>
   </div>
 </template>
@@ -231,4 +236,6 @@ export default {
       flex: 50%
     @media (max-width: 450px)
       flex: 100%
+  .p-0
+    padding: 0px
 </style>
