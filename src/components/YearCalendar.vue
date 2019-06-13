@@ -12,7 +12,7 @@
       </span>
       <!-- <span><button @click="addYear(1)">next</button></span> -->
     </div>
-    <div class="container__months">
+    <div class="container__months" :class="{'hide-weekend': hideWeekend, 'hide-sunday': hideSunday}">
       <month-calendar
         class="container__month"
         v-for="n in 12"
@@ -95,6 +95,14 @@ export default {
     prefixClass: {
       type: String,
       default: () => 'calendar--active'
+    },
+    hideWeekend: {
+      type: Boolean,
+      default: false
+    },
+    hideSunday: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -238,4 +246,21 @@ export default {
       flex: 100%
   .p-0
     padding: 0px
+</style>
+<style lang="stylus">
+.container__months.hide-sunday
+  .calendar__day:nth-of-type(7n)
+    display none !important
+  .calendar__day
+    flex 16.66% !important
+    .day
+      width 85%
+      height 85%
+
+.container__months.hide-weekend
+  .calendar__day:nth-of-type(7n), .calendar__day:nth-of-type(7n-1)
+    display none !important
+  .calendar__day
+    flex 19% !important
+
 </style>

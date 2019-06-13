@@ -99,7 +99,7 @@ The year to be display.
    * Type: `Array of objects`  
    * Required: `true`  
    * Default: `[]`
-Your selected dates. 
+Your selected dates.
 
 If you set `className` attributes, you can customize it style in CSS.
 
@@ -170,15 +170,40 @@ Choose language to displayed.
 
 
 
-### showYearSelector 
+### showYearSelector
    * Type: `Boolean`
    * Default: `true`
 
 Show or hide the years selector on top of the calendar.
 
-ex: 
+ex:
 ```javascript
 :showYearSelector="false"
+```
+
+
+### hideSunday
+   * Type: `Boolean`
+   * Default: `false`
+
+Hide or show all sundays in the calendar.
+
+ex:
+```javascript
+:hideSunday="true"
+```
+
+
+
+### hideWeekend
+   * Type: `Boolean`
+   * Default: `false`
+
+Hide or show all weekends (saturdays and sundays) in the calendar.
+
+ex:
+```javascript
+:hideWeekend="true"
 ```
 
 
@@ -207,4 +232,3 @@ ex:
   }
 </script>
 ```
-
