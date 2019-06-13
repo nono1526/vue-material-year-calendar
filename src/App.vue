@@ -15,10 +15,20 @@
       <option value="blue">blue</option>
       <option value="your_customized_classname">your_customized_classname</option>
     </select>
-
+    &emsp;
     <label for="">
       Show years selector?
       <input type="checkbox" v-model="showYearSelector" >
+    </label>
+    &emsp;
+    <label>
+      Hide weekend
+      <input type="checkbox" v-model="hideWeekend" >
+    </label>
+    &emsp;
+    <label>
+      Hide sunday
+      <input type="checkbox" v-model="hideSunday" >
     </label>
 
     <year-calendar
@@ -29,6 +39,8 @@
       prefixClass="your_customized_wrapper_class"
       :activeClass="activeClass"
       :showYearSelector="showYearSelector"
+      :hideWeekend="hideWeekend"
+      :hideSunday="hideSunday"
     ></year-calendar>
   </div>
 </template>
@@ -53,7 +65,9 @@ export default {
         { date: '2019-02-16', className: 'your_customized_classname' }
       ],
       activeClass: '',
-      showYearSelector: true
+      showYearSelector: true,
+      hideWeekend: false,
+      hideSunday: false
     }
   },
   methods: {
