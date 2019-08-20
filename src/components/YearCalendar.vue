@@ -98,14 +98,16 @@ export default {
     }
   },
   data () {
-    return {
-      isUsingString: true
-    }
+    return {}
   },
   components: {
     MonthCalendar
   },
   computed: {
+    isUsingString() {
+      if(!this.activeDates.length) return true;
+      return this.activeDates.length && typeof this.activeDates[0] === 'string';
+    },
     month () {
       const month = {}
       this.activeDates.forEach(date => {
@@ -158,7 +160,6 @@ export default {
 
       let dateIndex
       let newDates
-
       if (this.isUsingString) {
         dateIndex = this.activeDates.indexOf(activeDate)
         newDates = this.modifiedActiveDates(dateIndex, activeDate)
@@ -167,7 +168,6 @@ export default {
           date: activeDate,
           className: dateObj.className // 原為 this.defaultClassName ，修正bug(丁丁)
         }
-
         dateIndex = this.activeDates.indexOf(this.activeDates.find((i) => i.date === activeDate))
         newDates = this.modifiedActiveDates(dateIndex, oDate)
       }
@@ -182,9 +182,6 @@ export default {
       }
       return newDates
     }
-  },
-  created () {
-    this.isUsingString = this.activeDates.length && typeof this.activeDates[0] === 'string'
   }
 }
 </script>
