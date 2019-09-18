@@ -250,17 +250,16 @@ export default {
 <style lang="stylus">
 .container__months.hide-sunday
   .calendar__day:nth-of-type(7n)
-    display none !important
+    display none
   .calendar__day
-    flex 16.66% !important
+    flex 16.66%
     .day
       width 85%
       height 85%
-
 .container__months.hide-weekend
   .calendar__day:nth-of-type(7n), .calendar__day:nth-of-type(7n-1)
-    display none !important
+    display none
   .calendar__day
-    flex 19% !important
+    flex 19%
 
 </style>
