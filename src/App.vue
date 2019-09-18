@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <button @click="add_sat_and_sun_of_year">Add weekend</button>
-    <button @click="remove_sat_and_sun_of_year">Remove weekend</button>
+    <button @click="addWeekendCurrentYear">Add all weekend of current year</button>
+    <button @click="removeWeekendCurrentYear">Remove all of current year</button>
     <select v-model="lang">
       <option value="tw">繁體中文</option>
       <option value="en">English</option>
@@ -60,6 +60,7 @@ export default {
     toggleDate (dateInfo) {
       console.log(dateInfo)
     },
+
     add_sat_and_sun_of_year () {
       let theDate = dayjs(`${this.year}-01-01`)
 
@@ -71,19 +72,28 @@ export default {
         }
         theDate = theDate.add(1, 'day')
       }
-
-      // remove duplicate key
-      this.activeDates = this.activeDates.filter(function (item, pos, self) {
-        return self.indexOf(item) === pos
-      }).sort()
     },
-    remove_sat_and_sun_of_year () {
-      for (let i = this.activeDates.length - 1; i >= 0; i--) {
-        let date = this.activeDates[i]
-        if (dayjs(date).year() === this.year && (dayjs(date).day() === 6 || dayjs(date).day() === 0)) {
-          this.activeDates.splice(i, 1)
+    addWeekendCurrentYear () {
+      this.removeWeekendCurrentYear()
+      let theDate = dayjs(`${this.year}-01-01`)
+      let isActiveDateUsingString = this.activeDates.length && typeof this.activeDates[0] === 'string'
+      while (theDate.diff(theDate.endOf('year'), 'day') !== 0) {
+        if (theDate.day() === 6 || theDate.day() === 0) {
+          // add weekend to activeDates
+          let oDate = isActiveDateUsingString ? theDate.format('YYYY-MM-DD') : { date: theDate.format('YYYY-MM-DD') }
+          this.activeDates.push(oDate)
         }
+        theDate = theDate.add(1, 'day')
       }
+    },
+    removeWeekendCurrentYear () {
+      this.activeDates = this.activeDates.filter(oDate => {
+        let date = typeof oDate === 'string' ? oDate : oDate.date
+        let day = dayjs(date).day()
+        let isCurrentYear = dayjs(date).year() === this.year
+        let isWeekend = [6, 0].includes(day)
+        return !(isCurrentYear && isWeekend)
+      })
     }
   }
 }
