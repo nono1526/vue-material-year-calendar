@@ -72,7 +72,8 @@ export default {
         en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         pt: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
         de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-        es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+        es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        pl: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
       }
       return monthMapping[this.lang][this.month - 1]
     }
@@ -131,7 +132,8 @@ export default {
         en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
         pt: ['2ª', '3ª', '4ª', '5ª', '6ª', 'Sa', 'Do'],
         de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
-        es: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do']
+        es: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'],
+        pl: ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Niedź']
       }
       return dayMapping[this.lang][day]
     },
