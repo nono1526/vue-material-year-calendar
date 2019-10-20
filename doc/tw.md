@@ -174,7 +174,7 @@ ex:
 
 選擇語系。預設為英文。
 
-`en`: English, `tw`: 繁體中文。 Taiwan NO.1, `pl`: Polish
+`en`: English, `tw`: 繁體中文, `pt`: Português, `de`: Deutsch, `pl`: Polish
 
 ### showYearSelector 
    * Type: `Boolean`
