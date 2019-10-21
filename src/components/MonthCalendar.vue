@@ -62,7 +62,8 @@ export default {
         en: '14px',
         pt: '14px',
         de: '14px',
-        es: '14px'
+        es: '14px',
+        pl: '12px'
       }
       return fontSizeMapping[this.lang]
     },
@@ -133,7 +134,7 @@ export default {
         pt: ['2ª', '3ª', '4ª', '5ª', '6ª', 'Sa', 'Do'],
         de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
         es: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'],
-        pl: ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Niedź']
+        pl: ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nie']
       }
       return dayMapping[this.lang][day]
     },
