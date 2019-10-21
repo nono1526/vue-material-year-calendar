@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button @click="addWeekendCurrentYear">Add all weekend of current year</button>
-    <button @click="removeWeekendCurrentYear">Remove all of current year</button>
+    <button @click="removeWeekendCurrentYear">Remove all weekend of current year</button>
     <select v-model="lang">
       <option value="tw">繁體中文</option>
       <option value="en">English</option>
