@@ -6,8 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "test": "jest"
+    "test:unit": "jest --clearCache && vue-cli-service test:unit"
   },
   "dependencies": {
     "dayjs": "^1.8.13",
