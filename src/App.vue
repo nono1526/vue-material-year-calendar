@@ -42,6 +42,7 @@
       :showYearSelector="showYearSelector"
       :hideWeekend="hideWeekend"
       :hideSunday="hideSunday"
+      @monthClick="monthClicked"
     ></year-calendar>
   </div>
 </template>
@@ -109,6 +110,9 @@ export default {
         let isWeekend = [6, 0].includes(day)
         return !(isCurrentYear && isWeekend)
       })
+    },
+    monthClicked (monthYearInfo) {
+      console.log(monthYearInfo)
     }
   }
 }
