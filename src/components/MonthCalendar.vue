@@ -135,7 +135,8 @@ export default {
         pt: ['2ª', '3ª', '4ª', '5ª', '6ª', 'Sa', 'Do'],
         de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
         es: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'],
-        pl: ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nie']
+        pl: ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nie'],
+        ru: ['Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
       }
       return dayMapping[this.lang][day]
     },
