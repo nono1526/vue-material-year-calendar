@@ -136,7 +136,7 @@ export default {
         de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
         es: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'],
         pl: ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nie'],
-        ru: ['Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+        ru: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
       }
       return dayMapping[this.lang][day]
     },
