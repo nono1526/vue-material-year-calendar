@@ -63,7 +63,8 @@ export default {
         pt: '14px',
         de: '14px',
         es: '14px',
-        pl: '12px'
+        pl: '12px',
+        ru: '14px'
       }
       return fontSizeMapping[this.lang]
     },

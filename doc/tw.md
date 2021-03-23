@@ -174,7 +174,7 @@ ex:
 
 選擇語系。預設為英文。
 
-`en`: English, `tw`: 繁體中文, `pt`: Português, `de`: Deutsch, `pl`: Polish
+`en`: English, `tw`: 繁體中文, `pt`: Português, `de`: Deutsch, `pl`: Polish, `ru`: Русский
 
 ### showYearSelector 
    * Type: `Boolean`
