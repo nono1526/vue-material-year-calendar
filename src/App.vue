@@ -8,6 +8,7 @@
       <option value="pt">Português</option>
       <option value="de">Deutsch</option>
       <option value="pl">Polski</option>
+      <option value="ru">Русский</option>
     </select>
 
     <select v-model="activeClass">
@@ -58,7 +59,7 @@ export default {
   },
   data () {
     return {
-      lang: 'en', // 'en', 'tw', 'pt'
+      lang: 'en', // 'en', 'tw', 'pt', 'ru'
       year: 2019,
       activeDates: [
         { date: '2019-02-13' },
