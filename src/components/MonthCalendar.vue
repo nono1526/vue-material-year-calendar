@@ -169,7 +169,8 @@ export default {
     },
     monthClickEvent (year) {
       let monthYearInfo = {
-        month: this.monthTitle,
+        monthTitle: this.monthTitle,
+        month: this.month,
         year: year
       }
       this.$emit('monthClickEvent', monthYearInfo)
