@@ -24,6 +24,7 @@
         @toggleDate="toggleDate"
         :lang="lang"
         :prefixClass="prefixClass"
+        @monthClickEvent="monthClick"
       >
       </month-calendar>
       <div class="container__month p-0"></div>
@@ -189,6 +190,9 @@ export default {
         newDates.splice(dateIndex, 1)
       }
       return newDates
+    },
+    monthClick (monthYearInfo) {
+      this.$emit('monthClick', monthYearInfo)
     }
   },
   created () {

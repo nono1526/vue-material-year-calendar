@@ -4,7 +4,7 @@
     @mouseup="mouseUp"
     @mouseleave.stop="mouseUp"
   >
-    <div class="calendar__title">{{ monthTitle }}</div>
+    <div class="calendar__title" @click="monthClickEvent(year)">{{ monthTitle }}</div>
     <div class="calendar__body">
       <div v-for="(day, key) in 7" :key="`title${day}`" class="calendar__day day__weektitle" :style="{fontSize: weekTitleFontSizeAdjustLang}">{{ showDayTitle(key) }}</div>
       <div v-for="(dayObj, key) in showDays" class="calendar__day" :key="`day${key}`">
@@ -166,6 +166,14 @@ export default {
       if (dayObj.active) oClassList[dayObj.className] = true
 
       return oClassList
+    },
+    monthClickEvent (year) {
+      let monthYearInfo = {
+        monthTitle: this.monthTitle,
+        month: this.month,
+        year: year
+      }
+      this.$emit('monthClickEvent', monthYearInfo)
     }
   },
   watch: {
@@ -214,6 +222,7 @@ export default {
     font-size 18px
     height: 50px
     margin-bottom 12px
+    cursor pointer
   .calendar__body
     display flex
     flex-wrap: wrap

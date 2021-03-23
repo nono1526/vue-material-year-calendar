@@ -213,3 +213,27 @@ ex:
 </script>
 ```
 
+
+### @monthClickEvent
+   * $event: `{ year: 2021, month: 1, monthTitle: 'January' }`
+
+點選月份時，觸發這個函數。
+
+ex: 
+
+```vue
+<template>
+  <YearCalendar
+    @monthClickEvent="monthClick"
+  ></YearCalendar>
+</template>
+
+<script>
+  .....
+  methods: {
+    monthClick (monthYearInfo) {
+      console.log(monthYearInfo) // { year: 2021, month: 1, monthTitle: 'January' }
+    }
+  }
+</script>
+```

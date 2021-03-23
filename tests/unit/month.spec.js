@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils'
 import MonthCalendar from '@/components/MonthCalendar'
-import Vue from 'vue'
 describe('MonthCalendar', () => {
   const wrapper = mount(MonthCalendar, {
     propsData: {
@@ -43,5 +42,14 @@ describe('MonthCalendar', () => {
         { date: '2019-01-15', className: 'warning' }]
     })
     expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('should toggle month click event when click month', async () => {
+    await wrapper.find('.calendar__title').trigger('click')
+    expect(wrapper.emitted().monthClickEvent).toEqual([[{
+      monthTitle: '一月',
+      month: 1,
+      year: 2019
+    }]])
   })
 })

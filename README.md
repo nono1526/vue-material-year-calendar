@@ -232,3 +232,31 @@ ex:
   }
 </script>
 ```
+
+
+### @monthClick
+   * $event: `{ year: 2021, month: 1, monthTitle: 'January' }`
+
+
+Trigger when user click month title.
+
+
+
+ex: 
+
+```vue
+<template>
+  <YearCalendar
+    @monthClickEvent="monthClick"
+  ></YearCalendar>
+</template>
+
+<script>
+  .....
+  methods: {
+    monthClick (monthYearInfo) {
+      console.log(monthYearInfo) // { year: 2021, month: 1, monthTitle: 'January' }
+    }
+  }
+</script>
+```
