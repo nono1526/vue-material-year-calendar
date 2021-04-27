@@ -80,7 +80,6 @@ export default {
         return isGood
       }
     },
-    // value 為從外層傳進來的 v-model="year"
     value: {
       type: [String, Number],
       default: dayjs().year()
@@ -132,8 +131,7 @@ export default {
             className: date.className || ''
           }
         }
-
-        if (dayjs(oDate.date).year() !== this.value) return // 讓2020年1月的資料，不會放到 2019年的1月資料裡
+        if (dayjs(oDate.date).year() !== parseInt(this.value)) return // 讓2020年1月的資料，不會放到 2019年的1月資料裡
         let m = (dayjs(oDate.date).month() + 1).toString()
         if (!month[m]) month[m] = []
         month[m].push(oDate)
