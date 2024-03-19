@@ -7,6 +7,7 @@
       <option value="en">English</option>
       <option value="pt">Português</option>
       <option value="de">Deutsch</option>
+      <option value="es">Spanish</option>
       <option value="pl">Polski</option>
       <option value="ru">Русский</option>
     </select>
