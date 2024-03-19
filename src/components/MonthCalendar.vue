@@ -160,6 +160,9 @@ export default {
     mouseUp () {
       this.isMouseDown = false
     },
+    mouseOver (dayObj) {
+      this.toggleDay(dayObj)
+    },
     classList (dayObj) {
       let oClassList = {
         'calendar__day--otherMonth': dayObj.isOtherMonth,
